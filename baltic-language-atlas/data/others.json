@@ -14,14 +14,14 @@
    "note": "East Norse language with a pitch accent; heavily shaped by Middle Low German in the Hanseatic era. Centuries of rule over Finland made it the main source of Germanic loanwords in Finnish and left a Swedish-speaking minority on the Finnish coast.",
    "words": {
     "one": "en",
-    "two": "tva",
+    "two": "två",
     "three": "tre",
     "water": "vatten",
     "mother": "mor",
     "night": "natt",
     "sun": "sol",
     "name": "namn",
-    "heart": "hjarta",
+    "heart": "hjärta",
     "new": "ny",
     "fish": "fisk",
     "winter": "vinter"
@@ -56,8 +56,8 @@
   },
   {
    "id": "nor",
-   "name": "Norwegian (Bokmal)",
-   "endonym": "norsk (bokmal)",
+   "name": "Norwegian",
+   "endonym": "norsk (bokmål)",
    "family": "Indo-European",
    "parent": "west-norse",
    "speakers_m": 5,
@@ -84,7 +84,7 @@
   {
    "id": "isl",
    "name": "Icelandic",
-   "endonym": "islenska",
+   "endonym": "íslenska",
    "family": "Indo-European",
    "parent": "west-norse",
    "speakers_m": 0.37,
@@ -96,14 +96,14 @@
    "words": {
     "one": "einn",
     "two": "tveir",
-    "three": "thrir",
+    "three": "þrír",
     "water": "vatn",
-    "mother": "modir",
-    "night": "nott",
-    "sun": "sol",
+    "mother": "móðir",
+    "night": "nótt",
+    "sun": "sól",
     "name": "nafn",
     "heart": "hjarta",
-    "new": "nyr",
+    "new": "nýr",
     "fish": "fiskur",
     "winter": "vetur"
    }
@@ -111,7 +111,7 @@
   {
    "id": "fao",
    "name": "Faroese",
-   "endonym": "foroyskt",
+   "endonym": "føroyskt",
    "family": "Indo-European",
    "parent": "west-norse",
    "speakers_m": 0.07,
@@ -123,14 +123,14 @@
    "words": {
     "one": "ein",
     "two": "tveir",
-    "three": "triggir",
+    "three": "tríggir",
     "water": "vatn",
-    "mother": "modir",
-    "night": "natt",
-    "sun": "sol",
+    "mother": "móðir",
+    "night": "nátt",
+    "sun": "sól",
     "name": "navn",
     "heart": "hjarta",
-    "new": "nyggjur",
+    "new": "nýggjur",
     "fish": "fiskur",
     "winter": "vetur"
    }
@@ -165,7 +165,7 @@
   {
    "id": "nds",
    "name": "Low German",
-   "endonym": "Plattdutsch / Nedderdutsch",
+   "endonym": "Plattdüütsch",
    "family": "Indo-European",
    "parent": "low-german",
    "speakers_m": 2.5,
@@ -219,7 +219,7 @@
   {
    "id": "ron",
    "name": "Romanian",
-   "endonym": "romana",
+   "endonym": "română",
    "family": "Indo-European",
    "parent": "eastern-romance",
    "speakers_m": 24,
@@ -232,15 +232,15 @@
     "one": "unu",
     "two": "doi",
     "three": "trei",
-    "water": "apa",
-    "mother": "mama",
+    "water": "apă",
+    "mother": "mamă",
     "night": "noapte",
     "sun": "soare",
     "name": "nume",
-    "heart": "inima",
+    "heart": "inimă",
     "new": "nou",
-    "fish": "peste",
-    "winter": "iarna"
+    "fish": "pește",
+    "winter": "iarnă"
    }
   },
   {
@@ -258,22 +258,22 @@
    "words": {
     "one": "ber",
     "two": "ike",
-    "three": "oc",
+    "three": "öç",
     "water": "su",
     "mother": "ana",
-    "night": "ton",
-    "sun": "qoyas",
+    "night": "tön",
+    "sun": "qoyaş",
     "name": "isem",
-    "heart": "yorak",
-    "new": "yana",
-    "fish": "baliq",
-    "winter": "qis"
+    "heart": "yöräk",
+    "new": "yaña",
+    "fish": "balıq",
+    "winter": "qış"
    }
   },
   {
    "id": "chv",
    "name": "Chuvash",
-   "endonym": "chavash chelkhi",
+   "endonym": "čăvaš čĕlhi",
    "family": "Turkic",
    "parent": "oghur",
    "speakers_m": 1.0,
@@ -283,24 +283,24 @@
    "where": "Chuvashia and adjacent Volga regions of Russia",
    "note": "The only surviving Oghur (Bulgar) Turkic language, with rhotacism and lambdacism (r and l where Common Turkic has z and sh). Chuvash or its Volga Bulgar ancestor supplied early Turkic loanwords to Hungarian, Mari and Udmurt.",
    "words": {
-    "one": "per",
-    "two": "ikke",
-    "three": "visse",
-    "water": "sav",
-    "mother": null,
-    "night": null,
-    "sun": "hevel",
-    "name": "yat",
-    "heart": "cere",
-    "new": "cene",
-    "fish": "pula",
-    "winter": "hel"
+    "one": "pĕr",
+    "two": "ikkĕ",
+    "three": "viśśĕ",
+    "water": "šyv",
+    "mother": "anne",
+    "night": "śĕr",
+    "sun": "hĕvel",
+    "name": "jat",
+    "heart": "čĕre",
+    "new": "śĕnĕ",
+    "fish": "pulă",
+    "winter": "hĕl"
    }
   },
   {
    "id": "crh",
    "name": "Crimean Tatar",
-   "endonym": "qirimtatar tili",
+   "endonym": "qırımtatar tili",
    "family": "Turkic",
    "parent": "kipchak",
    "speakers_m": 0.5,
@@ -312,21 +312,21 @@
    "words": {
     "one": "bir",
     "two": "eki",
-    "three": "uc",
+    "three": "üç",
     "water": "suv",
     "mother": "ana",
     "night": "gece",
-    "sun": "kunes",
+    "sun": "küneş",
     "name": "isim",
-    "heart": "yurek",
-    "new": "yani",
-    "fish": "baliq",
-    "winter": "qis"
+    "heart": "yürek",
+    "new": "yañı",
+    "fish": "balıq",
+    "winter": "qış"
    }
   },
   {
    "id": "kdr",
-   "name": "Karaim (Trakai)",
+   "name": "Karaim",
    "endonym": "karaj tili",
    "family": "Turkic",
    "parent": "kipchak",
@@ -339,16 +339,16 @@
    "words": {
     "one": "bir",
     "two": "eki",
-    "three": "uc",
+    "three": "üč",
     "water": "suv",
     "mother": "ana",
     "night": null,
-    "sun": "kun",
+    "sun": null,
     "name": "at",
     "heart": null,
     "new": null,
     "fish": "balyk",
-    "winter": "kys"
+    "winter": "kyš"
    }
   }
  ],

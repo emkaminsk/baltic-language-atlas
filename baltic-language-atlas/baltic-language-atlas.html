@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baltic Language Atlas</title>
+<meta name="description" content="Interactive 3D atlas of 61 languages of northern and eastern Europe: families, divergence dates, word comparisons and loanword links.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>body{margin:0}</style>
 </head>
 <body>
-<title>Baltic Language Atlas</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: a sea-chart. Map is the working surface (left), a reading panel docks right; the family tree and notes run beneath. */
 :root{
@@ -20,6 +21,7 @@
   --display:"Bricolage Grotesque","IBM Plex Sans",system-ui,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:12px; --shadow:0 1px 2px rgb(20 35 42 / .05),0 10px 30px -14px rgb(20 35 42 / .18);
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#0e161a; --panel:#152026; --sea:#0a1216; --land:#1d2a30; --coast:#3d515a; --grat:#17242a;
@@ -116,17 +118,58 @@ td .m{display:inline-block;height:6px;border-radius:3px;background:var(--accent)
 .cards p{margin:0;font-size:13.5px;color:var(--muted)}
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 28px;font-size:13.5px;color:var(--muted)}
 .notes p{margin:0}
+/* ---- modern surface ---- */
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --shadow:0 1px 2px rgb(0 0 0 / .3),0 12px 32px -14px rgb(0 0 0 / .6) } }
+:root[data-theme="dark"]{ --shadow:0 1px 2px rgb(0 0 0 / .3),0 12px 32px -14px rgb(0 0 0 / .6) }
+.mapbox,.panel,.section{border-radius:var(--r);box-shadow:var(--shadow)}
+.bar select,.bar button,.panel button,.bar input,.time button{border-radius:8px;transition:border-color .15s,background .15s}
+.eyebrow{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.eyebrow span{font:500 12px var(--mono);color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 10px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;padding:2px;gap:2px;background:var(--bg)}
+.bar .seg button{border:0;border-radius:7px;padding:3px 12px;background:none;color:var(--muted);font-weight:500}
+.bar .seg button[aria-pressed="true"]{background:var(--panel);color:var(--fg);box-shadow:0 1px 3px rgb(0 0 0 / .15)}
+.bar .seg button:disabled{opacity:.45;cursor:not-allowed}
+#find{font:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);padding:4px 10px;width:12.5em;max-width:100%}
+.time .tbtn{font:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);padding:3px 10px;cursor:pointer}
+.time .tbtn:hover{border-color:var(--accent)}
+.time .tbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.only3d{display:none} body.is3d .only3d{display:revert}
+.map3d{position:relative;aspect-ratio:10/7;min-height:340px;max-height:80vh;width:100%;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,var(--panel),var(--bg) 75%)}
+.map3d[hidden]{display:none}
+@media (max-width:640px){.map3d{aspect-ratio:1/1}}
+.map3d canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab;outline:none}
+.map3d canvas.hot{cursor:pointer}
+.map3d .labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.l3d{pointer-events:none;padding-bottom:7px;transition:opacity .25s}
+.l3d.off{opacity:0}
+.l3d span{display:block;font:500 11.5px/1.3 var(--body);color:var(--fg);background:color-mix(in oklab,var(--panel) 80%,transparent);padding:0 6px;border-radius:6px;white-space:nowrap}
+.l3d.word span{font-family:var(--mono)}
+.l3d.sel span{font-weight:600;font-size:12.5px;box-shadow:0 0 0 1.5px var(--fg)}
+.l3d.cmp span{box-shadow:0 0 0 1.5px var(--accent)}
+.l3d.proto span{font:700 12.5px/1.3 var(--display);color:var(--c,var(--fg));background:color-mix(in oklab,var(--panel) 88%,transparent)}
+.l3d.proto small{font:500 10.5px var(--mono);color:var(--muted);margin-left:5px}
+.l3d.lca span{background:var(--accent);color:var(--panel);font:600 12.5px/1.35 var(--body);padding:3px 9px;border-radius:8px;text-align:center}
+.l3d.lca small{display:block;font:500 11px var(--mono);opacity:.85}
+.l3d.tick span{font:500 10.5px var(--mono);color:var(--muted);background:none;padding:0}
+.l3d.sheet span{font:600 11px var(--mono);color:var(--accent);background:none}
+.yearbig{position:absolute;left:16px;top:12px;font:700 clamp(26px,5vw,50px)/1 var(--display);letter-spacing:-.02em;color:var(--fg);opacity:.8;pointer-events:none;font-variant-numeric:tabular-nums}
+.hint3d{position:absolute;left:12px;bottom:10px;font-size:12px;color:var(--muted);background:color-mix(in oklab,var(--panel) 85%,transparent);padding:3px 9px;border-radius:8px;pointer-events:none;transition:opacity .8s}
+.hint3d.gone{opacity:0}
+@media (prefers-reduced-motion: reduce){ .l3d,.hint3d{transition:none} }
 </style>
 
 <div class="wrap">
 <header>
+  <div class="eyebrow"><span>61 languages</span><span>3 families</span><span>5,500 years</span></div>
   <h1>Baltic Language Atlas</h1>
-  <p>Languages of northern and eastern Europe, their families, and how long ago each pair went separate ways. Select a language, then a second one to compare. Drag the year back to watch today's languages merge into their ancestors.</p>
+  <p>Languages of northern and eastern Europe, their families, and how long ago each pair went separate ways. Select a language, then a second one to compare. In 3D, height is time: lift the family tree out of the map, or press play to watch today's languages split apart from their ancestors.</p>
 </header>
 
 <div class="stage">
   <div class="mapbox">
     <div class="bar">
+      <div class="seg" role="group" aria-label="Map view"><button type="button" id="v3d" aria-pressed="false" disabled title="Needs WebGL">3D</button><button type="button" id="v2d" aria-pressed="true">2D</button></div>
+      <input type="search" id="find" list="langlist" placeholder="Find a language…" autocomplete="off" aria-label="Find a language"><datalist id="langlist"></datalist>
       <label for="labelsel">Label with
         <select id="labelsel"><option value="name">language name</option><option value="endonym">own name</option></select>
       </label>
@@ -138,6 +181,7 @@ td .m{display:inline-block;height:6px;border-radius:3px;background:var(--accent)
     </div>
     <div class="mapwrap">
       <svg id="map" role="img" aria-label="Map of northern and eastern European languages"></svg>
+      <div id="map3d" class="map3d" hidden role="img" aria-label="3D map: languages as dots on the map, ancestors floating above at the height of their break-up date. The 2D view and the family tree below offer the same data with keyboard access."><div class="yearbig" id="yearbig" hidden></div><div class="hint3d" id="hint3d">Drag to orbit · scroll or pinch to zoom · right-drag to pan · click a dot</div></div>
       <div class="zoom"><button id="zin" type="button" aria-label="Zoom in">+</button><button id="zout" type="button" aria-label="Zoom out">−</button><button id="zreset" type="button" aria-label="Reset view">⌂</button></div>
       <div id="tip" hidden></div>
     </div>
@@ -145,7 +189,9 @@ td .m{display:inline-block;height:6px;border-radius:3px;background:var(--accent)
       <label for="year">Year</label>
       <input type="range" id="year" min="-4500" max="2026" step="25" value="2026">
       <output id="yearout" for="year">today</output>
-      <button id="todaybtn" type="button" style="font:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:3px 8px;cursor:pointer">Today</button>
+      <button id="playbtn" class="tbtn" type="button" aria-pressed="false">▶ Play history</button>
+      <button id="todaybtn" class="tbtn" type="button">Today</button>
+      <button id="liftbtn" class="tbtn only3d" type="button" aria-pressed="false">Lift family tree</button>
       <span class="small" id="yearnote"></span>
     </div>
     <div class="legend" id="legend"></div>
@@ -172,6 +218,7 @@ td .m{display:inline-block;height:6px;border-radius:3px;background:var(--accent)
     <p><b>Separation time</b> is today minus the estimated break-up date of the last common ancestor of two languages. It measures descent, not how alike the languages feel today.</p>
     <p><b>Dates are estimates.</b> Proto-languages left no written record. Dates come from sound-change chronology, datable loanwords, archaeology and statistical phylogenetics, and scholars often differ by centuries. Each fork carries its own range and confidence.</p>
     <p><b>Spelling resemblance</b> compares twelve basic words letter by letter. It is a rough signal only: it rewards shared spelling habits and misses true cognates that sound change has disguised (Polish <i>serce</i>, Lithuanian <i>širdis</i>).</p>
+    <p><b>In 3D, height is time.</b> An ancestor floats at the height of its estimated break-up, on the same compressed scale as the tree. It hangs over the average position of its descendants. That is a layout choice, not a claimed homeland: Proto-Uralic was not spoken over central Finland.</p>
     <p><b>Dots</b> mark the rough centre of each traditional speaking area, sized by number of speakers. Hollow dots are extinct languages. Language areas overlap far more than points can show.</p>
   </div>
 </section>
@@ -213,7 +260,9 @@ const lev = (a, b) => { const d = Array.from({length: a.length + 1}, (_, i) => i
 const wsim = (x, y) => { const a = norm(x), b = norm(y); if (!a || !b) return null; return 1 - lev(a, b) / Math.max(a.length, b.length); };
 const resemblance = (a, b) => { let s = 0, n = 0; WORDS.forEach(w => { const v = wsim(L[a].words[w], L[b].words[w]); if (v != null) { s += v; n++; } }); return n ? s / n : null; };
 
-const S = {focus: 'pol', cmp: 'lit', k: 1, cx: W / 2, cy: H / 2, year: NOW, label: 'name', color: 'family', contacts: false, arc: null};
+const S = {focus: 'pol', cmp: 'lit', k: 1, cx: W / 2, cy: H / 2, year: NOW, label: 'name', color: 'family', contacts: false, arc: null, view: '2d', lift: false};
+// languages grouped under the proto-language they still belonged to in year Y
+const groupsAt = Y => { const g = {}; if (Y < NOW) D.langs.forEach(l => { const a = groupAt(l, Y); if (a) (g[a] = g[a] || []).push(l); }); return g; };
 
 // ---------- map ----------
 const map = $('#map');
@@ -227,14 +276,17 @@ const kinColor = s => { if (s == null) return 'var(--far)'; const t = Math.min(1
 function view() { const w = W / S.k, h = H / S.k; S.cx = Math.max(w / 2, Math.min(W - w / 2, S.cx)); S.cy = Math.max(h / 2, Math.min(H - h / 2, S.cy)); map.setAttribute('viewBox', `${S.cx - w / 2} ${S.cy - h / 2} ${w} ${h}`); map.classList.toggle('zoomed', S.k > 1.01); }
 
 function drawMap() {
+  if (S.view === '3d' && window.atlas3d) { drawLegend(S.year < NOW, S.color === 'kin' && S.focus, groupsAt(S.year)); window.atlas3d.update(); }
+  else drawMap2d();
+  saveHash();
+}
+function drawMap2d() {
   view();
   const s = (map.clientWidth || W) / W, u = 1 / (S.k * s), small = s < 0.6 ? 0.72 : 1;
   gSpoke.textContent = gArc.textContent = gMk.textContent = gTx.textContent = '';
   const past = S.year < NOW, kin = S.color === 'kin' && S.focus;
   const placed = [], labels = [];
-  // proto-language groups in the chosen year
-  const groups = {};
-  if (past) D.langs.forEach(l => { const g = groupAt(l, S.year); if (g) (groups[g] = groups[g] || []).push(l); });
+  const groups = groupsAt(S.year);
   const fillOf = l => { if (kin) return l.id === S.focus ? 'var(--near)' : kinColor(sep(S.focus, l.id)); if (past) { const g = groupAt(l, S.year); return col(g ? nodeGroup(g) : l.g); } return col(l.g); };
   for (const g in groups) { const m = groups[g]; if (m.length < 2) continue; const gx = m.reduce((a, l) => a + l.x, 0) / m.length, gy = m.reduce((a, l) => a + l.y, 0) / m.length, c = col(nodeGroup(g));
     m.forEach(l => el('line', {class: 'spoke', x1: gx, y1: gy, x2: l.x, y2: l.y, stroke: c}, gSpoke));
@@ -286,7 +338,10 @@ map.addEventListener('pointermove', e => { const p = ptrs.get(e.pointerId); if (
   const b = map.getBoundingClientRect(); S.cx -= dx / b.width * W / S.k; S.cy -= dy / b.height * H / S.k; ptrs.set(e.pointerId, e); view(); });
 const up = e => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; };
 map.addEventListener('pointerup', up); map.addEventListener('pointercancel', up); map.addEventListener('pointerleave', up);
-$('#zin').onclick = () => zoomAt(1.6, S.cx, S.cy); $('#zout').onclick = () => zoomAt(1 / 1.6, S.cx, S.cy); $('#zreset').onclick = () => { S.k = 1; S.cx = W / 2; S.cy = H / 2; drawMap(); };
+const in3d = () => S.view === '3d' && window.atlas3d;
+$('#zin').onclick = () => in3d() ? atlas3d.zoom(0.7) : zoomAt(1.6, S.cx, S.cy);
+$('#zout').onclick = () => in3d() ? atlas3d.zoom(1 / 0.7) : zoomAt(1 / 1.6, S.cx, S.cy);
+$('#zreset').onclick = () => { if (in3d()) return atlas3d.reset(); S.k = 1; S.cx = W / 2; S.cy = H / 2; drawMap(); };
 
 // ---------- selection & panel ----------
 function pick(id) { if (!S.focus) S.focus = id; else if (id === S.focus) { S.focus = S.cmp; S.cmp = null; } else if (id === S.cmp) S.cmp = null; else S.cmp = id; S.arc = null; render(); }
@@ -321,7 +376,7 @@ function drawTree() {
   const t = $('#tree'); t.textContent = '';
   const kids = {}; D.nodes.forEach(n => { if (n.parent) (kids[n.parent] = kids[n.parent] || []).push({n}); }); D.langs.forEach(l => (kids[l.parent] = kids[l.parent] || []).push({l}));
   const roots = D.nodes.filter(n => !n.parent).sort((a, b) => ['uralic', 'indo-european', 'turkic'].indexOf(a.id) - ['uralic', 'indo-european', 'turkic'].indexOf(b.id));
-  const TW = 1000, padL = 16, padR = 150, top = 26, row = 15, minY = Math.min(...roots.map(r => r.year)) - 400;
+  const TW = 1000, padL = 72, padR = 150, top = 26, row = 15, minY = Math.min(...roots.map(r => r.year)) - 400;
   const X = y => padL + (1 - Math.sqrt(NOW - y) / Math.sqrt(NOW - minY)) * (TW - padL - padR);
   let i = 0; const pos = {};
   const walk = id => { const ch = (kids[id] || []).sort((a, b) => (a.l ? 1 : 0) - (b.l ? 1 : 0)); const ys = ch.map(c => { if (c.l) { const y = top + 12 + (i++) * row; pos[c.l.id] = {x: X(NOW), y}; return y; } return walk(c.n.id); }); const y = (Math.min(...ys) + Math.max(...ys)) / 2; pos[id] = {x: X(N[id].year), y}; return y; };
@@ -348,12 +403,320 @@ $('#colorsel').onchange = e => { S.color = e.target.value; drawMap(); };
 $('#contactchk').onchange = e => { S.contacts = e.target.checked; S.arc = null; drawMap(); showArc(); };
 $('#clearbtn').onclick = () => { S.focus = S.cmp = null; render(); };
 const yr = $('#year');
-function setYear(v) { S.year = +v; yr.value = v; $('#yearout').textContent = S.year >= NOW ? 'today' : fmtYear(S.year); $('#yearnote').textContent = S.year >= NOW ? 'Drag left to go back in time.' : 'Lines join languages that were still one language then.'; drawMap(); }
-yr.oninput = () => setYear(yr.value); $('#todaybtn').onclick = () => setYear(NOW);
+function setYear(v) { S.year = Math.min(NOW, +v); yr.value = S.year; $('#yearout').textContent = S.year >= NOW ? 'today' : fmtYear(S.year);
+  $('#yearnote').textContent = S.year >= NOW ? 'Drag left to go back in time.' : S.view === '3d' ? 'Merged dots were still one language then.' : 'Lines join languages that were still one language then.'; drawMap(); }
+yr.oninput = () => { stopPlay(); setYear(yr.value); }; $('#todaybtn').onclick = () => { stopPlay(); setYear(NOW); };
+
+// play history: years advance evenly on the compressed (sqrt) time scale, so early millennia pass quickly
+let play = null; const pbtn = $('#playbtn'), YMIN = +yr.min;
+function stopPlay() { if (!play) return; cancelAnimationFrame(play.raf); play = null; pbtn.setAttribute('aria-pressed', 'false'); pbtn.textContent = '▶ Play history'; }
+pbtn.onclick = () => { if (play) return stopPlay();
+  const u0 = Math.sqrt(NOW - (S.year >= NOW - 25 ? YMIN : S.year)), dur = 20000 * u0 / Math.sqrt(NOW - YMIN), t0 = performance.now();
+  pbtn.setAttribute('aria-pressed', 'true'); pbtn.textContent = '❚❚ Pause';
+  const step = t => { const k = Math.min(1, (t - t0) / dur), u = u0 * (1 - k); setYear(k >= 1 ? NOW : Math.round((NOW - u * u) / 25) * 25); if (k < 1) play.raf = requestAnimationFrame(step); else stopPlay(); };
+  play = {raf: requestAnimationFrame(step)}; };
+
+// 2D / 3D view
+function setView(v) { if (v === '3d' && !window.atlas3d) v = '2d'; S.view = v; document.body.classList.toggle('is3d', v === '3d');
+  $('#map').style.display = v === '3d' ? 'none' : ''; $('#map3d').hidden = v !== '3d';
+  $('#v3d').setAttribute('aria-pressed', v === '3d'); $('#v2d').setAttribute('aria-pressed', v === '2d');
+  window.atlas3d?.setActive(v === '3d'); $('#tip').hidden = true; setYear(S.year); }
+$('#v3d').onclick = () => setView('3d'); $('#v2d').onclick = () => setView('2d');
+const lbtn = $('#liftbtn');
+function setLift(on) { S.lift = !!on; lbtn.setAttribute('aria-pressed', S.lift); lbtn.textContent = S.lift ? 'Lower family tree' : 'Lift family tree'; window.atlas3d?.setLift(S.lift); saveHash(); }
+lbtn.onclick = () => setLift(!S.lift);
+
+// language search
+$('#langlist').innerHTML = [...D.langs].sort((a, b) => a.name.localeCompare(b.name)).map(l => `<option value="${esc(l.name)}">${esc(l.endonym)}</option>`).join('');
+$('#find').addEventListener('change', e => { const q = e.target.value.trim().toLowerCase(); if (!q) return;
+  const l = D.langs.find(l => l.name.toLowerCase() === q || l.endonym.toLowerCase() === q) || D.langs.find(l => l.name.toLowerCase().startsWith(q));
+  if (l) { if (l.id !== S.focus && l.id !== S.cmp) pick(l.id); e.target.value = ''; } });
+
+// shareable state in the URL hash: #f=pol&c=lit&y=-800&v=2d&t=1
+function saveHash() { clearTimeout(saveHash.t); saveHash.t = setTimeout(() => { const p = new URLSearchParams();
+  if (S.focus) p.set('f', S.focus); if (S.cmp) p.set('c', S.cmp); if (S.year < NOW) p.set('y', S.year); if (S.view === '2d' && window.atlas3d) p.set('v', '2d'); if (S.lift) p.set('t', '1');
+  try { history.replaceState(null, '', p.size ? '#' + p : location.pathname + location.search); } catch {} }, 300); }
+const HASH = new URLSearchParams(location.hash.slice(1));
+if (HASH.has('f')) { S.focus = L[HASH.get('f')] ? HASH.get('f') : null; S.cmp = L[HASH.get('c')] && HASH.get('c') !== S.focus ? HASH.get('c') : null; }
+S.lift = HASH.get('t') === '1'; setLift(S.lift);
+
 $('#plcards').innerHTML = D.pl.map(c => `<div><h4>${esc(c.topic)}</h4><p>${esc(c.text)}</p></div>`).join('');
 function render() { drawMap(); drawPanel(); drawTree(); showArc(); }
 let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(drawMap, 120); });
-setYear(NOW); render();
+setYear(HASH.has('y') ? Math.max(YMIN, Math.min(NOW, +HASH.get('y') || NOW)) : NOW); render();
+</script>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<script type="module">
+// 3D view: time is height. Uses the classic script's globals (D, L, N, S, pick, setView, ...).
+// If WebGL or the CDN is unavailable this never runs and the 2D SVG map stays.
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+const webgl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch { return false; } })();
+if (webgl) init3d();
+
+function init3d() {
+  const V3 = THREE.Vector3, host = $('#map3d'), wrap = host.parentElement, tip = $('#tip');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const cssColor = n => new THREE.Color(css(n) || '#888888');
+
+  // ---------- renderer, camera, controls ----------
+  const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  host.prepend(renderer.domElement);
+  const labelR = new CSS2DRenderer(); labelR.domElement.className = 'labels'; host.insertBefore(labelR.domElement, $('#yearbig'));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(36, 1.4, 5, 8000);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  Object.assign(controls, {enableDamping: true, dampingFactor: 0.08, maxPolarAngle: 1.42, minDistance: 110, maxDistance: 2600, screenSpacePanning: false, zoomSpeed: 0.9});
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x8899aa, 1.6));
+  const sun = new THREE.DirectionalLight(0xffffff, 1.5); sun.position.set(-300, 700, 350); scene.add(sun);
+
+  // ---------- coordinates: map units on the ground, time as height ----------
+  const HMAX = 320, minYear = Math.min(...D.nodes.map(n => n.year)) - 400;
+  const hOf = yr => HMAX * Math.sqrt(Math.max(0, NOW - yr)) / Math.sqrt(NOW - minYear);   // same compression as the tree
+  const wx = x => x - W / 2, wz = y => y - H / 2;
+  const P = {};
+  D.langs.forEach(l => P[l.id] = new V3(wx(l.x), 0, wz(l.y)));
+  D.nodes.forEach(n => { const ls = leavesOf[n.id] || []; P[n.id] = new V3(wx(ls.reduce((a, l) => a + l.x, 0) / ls.length), hOf(n.year), wz(ls.reduce((a, l) => a + l.y, 0) / ls.length)); });
+  const parentOf = id => (L[id] || N[id]).parent;
+  // each child→parent edge is a curve that leaves the child vertically and arrives at the parent vertically
+  const CURVE = {};
+  [...D.langs, ...D.nodes].forEach(o => { if (!o.parent) return; const a = P[o.id], b = P[o.parent], dh = b.y - a.y;
+    CURVE[o.id] = new THREE.CubicBezierCurve3(a.clone(), new V3(a.x, a.y + dh * .55, a.z), new V3(b.x, b.y - dh * .3, b.z), b.clone()); });
+  const tmp = new V3();
+  // where a language "was" at height h: on its lineage, so sisters meet at the shared ancestor
+  function lineagePoint(id, h, out) {
+    for (let cur = id; ;) { const p = parentOf(cur); if (!p) return out.copy(P[cur]);
+      if (h <= P[p].y) { const c = CURVE[cur]; if (h <= c.v0.y) return out.copy(c.v0); let lo = 0, hi = 1;
+        for (let i = 0; i < 22; i++) { const m = (lo + hi) / 2; c.getPoint(m, tmp); if (tmp.y < h) lo = m; else hi = m; } return c.getPoint(hi, out); }
+      cur = p; } }
+
+  // ---------- ground: the SVG land path, extruded ----------
+  const rings = d => { const out = []; let r = null; d.replace(/([MLZ])([^MLZ]*)/g, (_, c, a) => { if (c === 'M') { r = []; out.push(r); } if (c !== 'Z') { const [x, y] = a.split(',').map(Number); r.push(new THREE.Vector2(x, y)); } }); return out; };
+  const landRings = rings(D.geo.land).filter(r => r.length > 2);
+  const inside = (pt, poly) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a.y > pt.y) !== (b.y > pt.y) && pt.x < (b.x - a.x) * (pt.y - a.y) / (b.y - a.y) + a.x) c = !c; } return c; };
+  const area = r => Math.abs(THREE.ShapeUtils.area(r));
+  // rings nested an odd number of times are lakes (holes)
+  const info = landRings.map(r => ({r, a: area(r), par: landRings.filter(o => o !== r && area(o) > area(r) && inside(r[0], o))}));
+  const shapes = new Map();
+  info.filter(i => i.par.length % 2 === 0).forEach(i => shapes.set(i.r, new THREE.Shape(i.r)));
+  info.filter(i => i.par.length % 2 === 1).forEach(i => { const host = i.par.filter(p => shapes.has(p)).sort((a, b) => area(a) - area(b))[0]; if (host) shapes.get(host).holes.push(new THREE.Path(i.r)); });
+  const DEPTH = 5;
+  const landGeo = new THREE.ExtrudeGeometry([...shapes.values()], {depth: DEPTH, bevelEnabled: false});
+  landGeo.rotateX(Math.PI / 2); landGeo.translate(-W / 2, 0, -H / 2);   // svg (x,y) → world (x, 0, y), extruded downward
+  const landMat = new THREE.MeshStandardMaterial({roughness: .95, metalness: 0});
+  scene.add(new THREE.Mesh(landGeo, landMat));
+  const tableMat = new THREE.MeshStandardMaterial({roughness: .9});
+  const table = new THREE.Mesh(new THREE.BoxGeometry(W, 14, H), tableMat); table.position.y = -DEPTH - 7.5; scene.add(table);
+  const lineGeo = (d, closed, y) => { const pts = []; rings(d).forEach(r => { const n = closed ? r.length : r.length - 1; for (let i = 0; i < n; i++) { const a = r[i], b = r[(i + 1) % r.length]; pts.push(wx(a.x), y, wz(a.y), wx(b.x), y, wz(b.y)); } });
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3)); return g; };
+  const coastMat = new THREE.LineBasicMaterial(), bordMat = new THREE.LineBasicMaterial({transparent: true, opacity: .55}), gratMat = new THREE.LineBasicMaterial({transparent: true, opacity: .5});
+  scene.add(new THREE.LineSegments(lineGeo(D.geo.land, true, .2), coastMat));
+  scene.add(new THREE.LineSegments(lineGeo(D.geo.borders, false, .3), bordMat));
+  scene.add(new THREE.LineSegments(lineGeo(D.geo.grat, false, -DEPTH - .2), gratMat));
+
+  // ---------- family tree canopy (scaled vertically by "lift") ----------
+  const treeG = new THREE.Group(); scene.add(treeG);
+  const groupKey = id => L[id] ? L[id].g : nodeGroup(id);
+  const edges = [];
+  for (const id in CURVE) { const lang = !!L[id], m = new THREE.Mesh(new THREE.TubeGeometry(CURVE[id], 28, lang ? .55 : .9, 6), new THREE.MeshBasicMaterial({transparent: true, opacity: lang && L[id].status === 'extinct' ? .25 : .5, depthWrite: false}));
+    m.userData = {id}; treeG.add(m); edges.push(m); }
+  const sphere = new THREE.SphereGeometry(1, 24, 16);
+  const nodeMesh = new THREE.InstancedMesh(sphere, new THREE.MeshStandardMaterial({roughness: .5}), D.nodes.length);
+  const dummy = new THREE.Object3D();
+  D.nodes.forEach((n, i) => { dummy.position.copy(P[n.id]); dummy.scale.setScalar(3.2); dummy.updateMatrix(); nodeMesh.setMatrixAt(i, dummy.matrix); });
+  treeG.add(nodeMesh);
+  // time ruler in the back-left corner
+  const ruler = new THREE.Group(); treeG.add(ruler);
+  const rx = -W / 2 - 18, rz = -H / 2, rulerMat = new THREE.LineBasicMaterial();
+  const rpts = [rx, 0, rz, rx, HMAX, rz];
+  const ticks = [1500, 1000, 500, 1, -1000, -2000, -3000];
+  ticks.forEach(y => rpts.push(rx, hOf(y), rz, rx + 10, hOf(y), rz));
+  const rg = new THREE.BufferGeometry(); rg.setAttribute('position', new THREE.Float32BufferAttribute(rpts, 3)); ruler.add(new THREE.LineSegments(rg, rulerMat));
+
+  // ---------- labels (HTML, so they stay crisp and follow the CSS theme) ----------
+  const labels = [], tickLabs = [];
+  function mkLabel(cls, parent = scene) { const el = document.createElement('div'), span = document.createElement('span'); el.className = 'l3d ' + cls; el.appendChild(span);
+    const o = new CSS2DObject(el); o.center.set(.5, 1); o.visible = false; parent.add(o); const lb = {o, el, span, text: '', pr: 0, w: 0}; labels.push(lb); return lb; }
+  const setText = (lb, html, chars) => { if (lb.text !== html) { lb.text = html; lb.span.innerHTML = html; lb.w = chars * 6.9 + 14; } };
+  ticks.forEach(y => { const lb = mkLabel('tick', ruler); lb.o.center.set(1, .5); lb.o.position.set(rx - 4, hOf(y), rz); setText(lb, y === 1 ? '1 CE' : fmtYear(y).replace(' CE', ''), 8); lb.pr = 3e6; tickLabs.push(lb); });
+  const langLab = {}; D.langs.forEach(l => langLab[l.id] = mkLabel(''));
+  const nodeLab = {}; D.nodes.forEach(n => nodeLab[n.id] = mkLabel('proto'));
+  const lcaLab = mkLabel('lca'); lcaLab.pr = 9e6;
+  const sheetLab = mkLabel('sheet'); sheetLab.o.center.set(0, 1); sheetLab.pr = 8e6;
+
+  // ---------- languages ----------
+  const R = D.langs.map(l => 3 + 1.8 * Math.log10(1 + l.speakers_m * 10));
+  const beads = new THREE.InstancedMesh(sphere, new THREE.MeshStandardMaterial({roughness: .35, metalness: .05}), D.langs.length);
+  beads.instanceMatrix.setUsage(THREE.DynamicDrawUsage); scene.add(beads);
+  const extinct = D.langs.map((l, i) => l.status === 'extinct' ? i : -1).filter(i => i >= 0);
+  const ringGeo = new THREE.TorusGeometry(1, .13, 8, 40); ringGeo.rotateX(Math.PI / 2);
+  const ghostRings = new THREE.InstancedMesh(ringGeo, new THREE.MeshStandardMaterial({roughness: .5}), extinct.length); scene.add(ghostRings);
+  const selRing = [0, 1].map(() => { const m = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial()); m.visible = false; scene.add(m); return m; });
+  const beadPos = D.langs.map(() => new V3());
+
+  // ---------- contact arcs with particles flowing towards the borrower ----------
+  const arcs = D.contacts.map((c, i) => { const a = P[c.from], b = P[c.to]; if (!a || !b) return null; const d = a.distanceTo(b), mid = a.clone().lerp(b, .5); mid.y = 30 + d * .38;
+    const curve = new THREE.QuadraticBezierCurve3(a.clone().setY(2), mid, b.clone().setY(2));
+    const m = new THREE.Mesh(new THREE.TubeGeometry(curve, 48, .45 + .3 * c.strength, 6), new THREE.MeshBasicMaterial({transparent: true, depthWrite: false}));
+    m.userData = {arc: i}; m.visible = false; scene.add(m); return {m, curve, c}; });
+  const PER = 4, parts = new THREE.InstancedMesh(sphere, new THREE.MeshBasicMaterial(), arcs.length * PER); scene.add(parts);
+
+  // ---------- highlighted lineage of the selection (always full height) ----------
+  const hlG = new THREE.Group(); scene.add(hlG);
+  const hlMat = new THREE.MeshStandardMaterial({roughness: .4}), lcaMesh = new THREE.Mesh(sphere, hlMat);
+  let selKey = '', lcaId = null;
+  function buildHighlight() {
+    hlG.children.forEach(m => m !== lcaMesh && m.geometry.dispose()); hlG.clear(); lcaId = null; const f = S.focus, c = S.cmp; if (!f) return;
+    const ids = new Set();
+    if (c) { lcaId = lca(f, c); [f, c].forEach(id => { for (let k = id; k && k !== lcaId; k = parentOf(k)) ids.add(k); }); }
+    else for (let k = f; parentOf(k); k = parentOf(k)) ids.add(k);
+    ids.forEach(id => hlG.add(new THREE.Mesh(new THREE.TubeGeometry(CURVE[id], 40, 1.5, 8), hlMat)));
+    if (lcaId) { lcaMesh.position.copy(P[lcaId]); lcaMesh.scale.setScalar(6); hlG.add(lcaMesh); }
+  }
+
+  // ---------- time sheet ----------
+  const sheet = new THREE.Mesh(new THREE.PlaneGeometry(W, H).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({transparent: true, opacity: .07, depthWrite: false, side: THREE.DoubleSide}));
+  const sheetEdge = new THREE.LineSegments(new THREE.EdgesGeometry(sheet.geometry), new THREE.LineBasicMaterial({transparent: true, opacity: .5}));
+  sheet.add(sheetEdge); scene.add(sheet);
+  sheet.add(sheetLab.o); sheetLab.o.position.set(-W / 2 + 6, 0, -H / 2);
+
+  // ---------- theme ----------
+  let COL = {};
+  function applyTheme() {
+    COL = {}; ['finnic', 'sami', 'uralic', 'baltic', 'slavic', 'germanic', 'romance', 'turkic', 'bs', 'ur', 'ie'].forEach(g => COL[g] = cssColor('--g-' + g));
+    ['land', 'sea', 'coast', 'fg', 'accent', 'near', 'far', 'grat', 'muted', 'panel'].forEach(k => COL[k] = cssColor('--' + k));
+    landMat.color.copy(COL.land); tableMat.color.copy(COL.sea); coastMat.color.copy(COL.coast); bordMat.color.copy(COL.coast); gratMat.color.copy(COL.grat); rulerMat.color.copy(COL.muted);
+    edges.forEach(m => m.material.color.copy(COL[groupKey(m.userData.id)]));
+    D.nodes.forEach((n, i) => nodeMesh.setColorAt(i, COL[nodeGroup(n.id)])); nodeMesh.instanceColor.needsUpdate = true;
+    hlMat.color.copy(COL.accent); hlMat.emissive.copy(COL.accent).multiplyScalar(.35);
+    selRing[0].material.color.copy(COL.fg); selRing[1].material.color.copy(COL.accent);
+    sheet.material.color.copy(COL.accent); sheetEdge.material.color.copy(COL.accent); parts.material.color.copy(COL.accent);
+    D.nodes.forEach(n => nodeLab[n.id].el.style.setProperty('--c', `var(--g-${nodeGroup(n.id)})`));
+    dirty = true;
+  }
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+  new MutationObserver(applyTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+
+  // ---------- state, animated toward S ----------
+  let active = false, onscreen = true, dirty = true, lift = S.lift ? 1 : 0, liftT = lift, hNow = hOf(S.year), hT = hNow, tween = null;
+  const col3 = new THREE.Color();
+  function beadColor(l, Y) {
+    if (S.color === 'kin' && S.focus) { if (l.id === S.focus) return col3.copy(COL.near); const s = sep(S.focus, l.id); return s == null ? col3.copy(COL.far) : col3.copy(COL.near).lerp(COL.far, Math.min(1, Math.sqrt(s / 6500))); }
+    if (Y < NOW) { const g = groupAt(l, Y); return col3.copy(COL[g ? nodeGroup(g) : l.g]); }
+    return col3.copy(COL[l.g]);
+  }
+  const yearFromH = h => NOW - (h / HMAX) ** 2 * (NOW - minYear);
+
+  function layout() {
+    const Y = hNow < .01 ? NOW : yearFromH(hNow), groups = groupsAt(Y);
+    treeG.scale.y = Math.max(lift, .001); treeG.visible = lift > .01; tickLabs.forEach(lb => lb.o.visible = lift > .3);
+    edges.forEach(m => m.material.opacity = (L[m.userData.id]?.status === 'extinct' ? .25 : .5) * lift);
+    let e = 0;
+    D.langs.forEach((l, i) => { const v = lineagePoint(l.id, hNow, beadPos[i]); v.y = v.y * lift + R[i];
+      dummy.position.copy(v); dummy.scale.setScalar(R[i]); dummy.updateMatrix(); beads.setMatrixAt(i, dummy.matrix);
+      const c = beadColor(l, Y); if (l.status === 'extinct') { beads.setColorAt(i, c.clone().lerp(COL.land, .65)); dummy.scale.setScalar(R[i] * 1.25); dummy.updateMatrix(); ghostRings.setMatrixAt(e, dummy.matrix); ghostRings.setColorAt(e++, c); }
+      else beads.setColorAt(i, c);
+      // label: own name while distinct, hidden once merged into an ancestor
+      const lb = langLab[l.id], sel = l.id === S.focus || l.id === S.cmp, g = groupAt(l, Y), merged = g && groups[g] && groups[g].length > 1;
+      const t = S.label === 'name' ? l.name : S.label === 'endonym' ? l.endonym : l.words[S.label];
+      lb.o.visible = !!t && !merged; lb.o.position.copy(v).setY(v.y + R[i]);
+      setText(lb, esc(t), String(t || '').length * (sel ? 1.1 : 1)); lb.el.className = 'l3d' + (S.label === 'name' || S.label === 'endonym' ? '' : ' word') + (l.id === S.focus ? ' sel' : l.id === S.cmp ? ' sel cmp' : '');
+      lb.pr = sel ? 1e7 : l.speakers_m + (l.g === 'baltic' || l.g === 'finnic' ? 3 : 0);
+    });
+    beads.instanceMatrix.needsUpdate = ghostRings.instanceMatrix.needsUpdate = true; beads.instanceColor.needsUpdate = true; if (ghostRings.instanceColor) ghostRings.instanceColor.needsUpdate = true;
+    // proto-language labels: on merged dots in the past, on tree nodes when lifted
+    const hlIds = new Set(); if (S.focus) [S.focus, S.cmp].filter(Boolean).forEach(id => L[id].chain.forEach(c => hlIds.add(c)));
+    D.nodes.forEach(n => { const lb = nodeLab[n.id], m = groups[n.id], active = m && m.length > 1;
+      const big = (leavesOf[n.id] || []).length >= 4 || hlIds.has(n.id);
+      lb.o.visible = !!active || (lift > .5 && big && n.id !== lcaId);
+      if (active) lb.o.position.copy(beadPos[D.langs.indexOf(m[0])]).setY(beadPos[D.langs.indexOf(m[0])].y + R[D.langs.indexOf(m[0])] + 2);
+      else lb.o.position.set(P[n.id].x, P[n.id].y * lift + 4, P[n.id].z);
+      setText(lb, active ? `${esc(shortName(n))}<small>${m.length}</small>` : `${esc(shortName(n))}<small>${fmtYear(n.year)}</small>`, shortName(n).length + 8);
+      lb.pr = active ? 2e6 + m.length : 1e6 + (leavesOf[n.id] || []).length; });
+    // last common ancestor
+    hlG.visible = lift > .5 || hNow < 1; lcaLab.o.visible = !!lcaId && hlG.visible;
+    if (lcaId) { const s = sep(S.focus, S.cmp); lcaLab.o.position.copy(P[lcaId]).setY(P[lcaId].y + 8);
+      setText(lcaLab, `${esc(N[lcaId].name)}<small>${fmtSep(s).replace('~', '≈ ')} apart · broke up ~${fmtYear(N[lcaId].year)}</small>`, Math.max(N[lcaId].name.length, 34)); }
+    // time sheet
+    const past = Y < NOW - 1; sheet.visible = past && lift > .05; sheet.position.y = hNow * lift; sheetLab.o.visible = sheet.visible; setText(sheetLab, fmtYear(Math.round(Y / 25) * 25), 10);
+    // contact arcs
+    arcs.forEach(a => { if (!a) return; const c = a.c; a.m.visible = S.contacts && !(S.focus && c.from !== S.focus && c.to !== S.focus && S.cmp !== c.from && S.cmp !== c.to);
+      a.m.material.color.copy(S.arc === a.m.userData.arc ? COL.accent : COL.fg); a.m.material.opacity = S.arc === a.m.userData.arc ? .95 : c.kind === 'loanwords' ? .45 : .25; });
+  }
+
+  // ---------- label collision (screen space, by priority) ----------
+  const pv = new V3();
+  function declutter() {
+    const w = host.clientWidth, h = host.clientHeight, placed = [];
+    labels.filter(lb => lb.o.visible).sort((a, b) => b.pr - a.pr).forEach(lb => {
+      lb.o.getWorldPosition(pv).project(camera); const sx = (pv.x + 1) / 2 * w, sy = (1 - pv.y) / 2 * h, bw = lb.w, bh = lb.el.classList.contains('lca') ? 40 : 18;
+      const x0 = sx - bw * lb.o.center.x, y0 = sy - 7 - bh * lb.o.center.y;
+      const ok = pv.z < 1 && (lb.pr >= 5e6 || !placed.some(p => x0 < p[0] + p[2] && x0 + bw > p[0] && y0 < p[1] + p[3] && y0 + bh > p[1]));
+      lb.el.classList.toggle('off', !ok); if (ok) placed.push([x0, y0, bw, bh]); });
+  }
+
+  // ---------- camera presets ----------
+  function preset(lifted) { const a = host.clientWidth / Math.max(1, host.clientHeight), f = Math.max(1, 1.45 / a), fl = Math.max(1, 1.15 / a);
+    return lifted ? {pos: new V3(-90 * fl, 170 * fl + 150, 1150 * fl), tgt: new V3(0, 150, 30)} : {pos: new V3(0, 700 * f, 800 * f), tgt: new V3(0, 0, 55)}; }
+  function flyTo(p, ms = 1200) { tween = {p0: camera.position.clone(), t0v: controls.target.clone(), p, ms: reduce.matches ? 1 : ms, s: performance.now()}; }
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
+
+  // ---------- picking ----------
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(); let down = null, hoverId = null;
+  function hit(e) { const b = renderer.domElement.getBoundingClientRect(); ndc.set((e.clientX - b.left) / b.width * 2 - 1, -(e.clientY - b.top) / b.height * 2 + 1); ray.setFromCamera(ndc, camera);
+    let r = ray.intersectObject(beads)[0]; if (r) return {lang: D.langs[r.instanceId]};
+    r = ray.intersectObjects(arcs.filter(a => a && a.m.visible).map(a => a.m))[0]; if (r) return {arc: r.object.userData.arc};
+    if (treeG.visible) { r = ray.intersectObject(nodeMesh)[0]; if (r) return {node: D.nodes[r.instanceId]}; }
+    if (lcaId) { r = ray.intersectObject(lcaMesh)[0]; if (r) return {node: N[lcaId]}; } return null; }
+  const cv = renderer.domElement;
+  cv.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; $('#hint3d').classList.add('gone'); tween = null; });
+  cv.addEventListener('pointerup', e => { if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 5) return; down = null; const h = hit(e); if (!h) return;
+    if (h.lang) pick(h.lang.id); else if (h.arc != null) { S.arc = h.arc; drawMap(); showArc(); } });
+  cv.addEventListener('pointermove', e => { if (e.buttons) { tip.hidden = true; return; } const h = hit(e), b = wrap.getBoundingClientRect(); cv.classList.toggle('hot', !!h && !h.node);
+    if (!h) { tip.hidden = true; return; }
+    tip.textContent = h.lang ? `${h.lang.name} · ${h.lang.endonym}` : h.node ? `${h.node.name}: broke up ~${fmtYear(h.node.year)} (${h.node.range}; confidence ${h.node.confidence})` : `${L[D.contacts[h.arc].from].name} → ${L[D.contacts[h.arc].to].name} · ${D.contacts[h.arc].kind}`;
+    tip.style.left = (e.clientX - b.left) + 'px'; tip.style.top = (e.clientY - b.top) + 'px'; tip.hidden = false; });
+  cv.addEventListener('pointerleave', () => tip.hidden = true);
+
+  // ---------- loop ----------
+  function resize() { const w = host.clientWidth, h = host.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); labelR.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+  new ResizeObserver(resize).observe(host);
+  new IntersectionObserver(es => onscreen = es[0].isIntersecting).observe(host);
+  let last = performance.now();
+  function frame(t) {
+    requestAnimationFrame(frame); if (!active || !onscreen) { last = t; return; }
+    const dt = Math.min(.05, (t - last) / 1000); last = t; const k = reduce.matches ? 1 : 1 - Math.exp(-dt * 7);
+    if (Math.abs(liftT - lift) > 1e-3) { lift += (liftT - lift) * k; dirty = true; } else if (lift !== liftT) { lift = liftT; dirty = true; }
+    if (Math.abs(hT - hNow) > .05) { hNow += (hT - hNow) * (reduce.matches ? 1 : 1 - Math.exp(-dt * 10)); dirty = true; } else if (hNow !== hT) { hNow = hT; dirty = true; }
+    if (dirty) { layout(); dirty = false; }
+    if (tween) { const u = Math.min(1, (t - tween.s) / tween.ms), e = ease(u); camera.position.lerpVectors(tween.p0, tween.p.pos, e); controls.target.lerpVectors(tween.t0v, tween.p.tgt, e); if (u >= 1) tween = null; }
+    controls.update();
+    // flowing particles + pulsing selection rings
+    let pi = 0; const ph = reduce.matches ? 0 : t / 2600;
+    arcs.forEach(a => { for (let j = 0; j < PER; j++, pi++) { if (a && a.m.visible) { a.curve.getPoint((ph + j / PER) % 1, dummy.position); dummy.scale.setScalar(1.1 + .25 * a.c.strength); } else dummy.scale.setScalar(0); dummy.updateMatrix(); parts.setMatrixAt(pi, dummy.matrix); } });
+    parts.instanceMatrix.needsUpdate = true;
+    [S.focus, S.cmp].forEach((id, j) => { const m = selRing[j]; m.visible = !!id; if (!id) return; const i = D.langs.indexOf(L[id]); m.position.copy(beadPos[i]); m.scale.setScalar(R[i] + 3 + (reduce.matches ? 0 : Math.sin(t / 380 + j * 2) * .8)); });
+    renderer.render(scene, camera); labelR.render(scene, camera); declutter();
+  }
+
+  // ---------- public API used by the classic script ----------
+  window.atlas3d = {
+    update() { const key = S.focus + '|' + S.cmp; if (key !== selKey) { selKey = key; buildHighlight(); } hT = hOf(S.year); dirty = true; const yb = $('#yearbig'); yb.hidden = S.year >= NOW; yb.textContent = fmtYear(S.year); },
+    setActive(on) { const first = on && !active && !this.seen; active = on; if (!on) return; resize(); dirty = true;
+      if (first) { this.seen = true; const p = preset(lift > .5); camera.position.copy(p.pos).multiplyScalar(1.5); controls.target.copy(p.tgt); flyTo(p, 1800); } },
+    setLift(on) { liftT = on ? 1 : 0; if (active) flyTo(preset(on)); },
+    zoom(f) { const off = camera.position.clone().sub(controls.target).multiplyScalar(f); const len = off.length(); if (len < controls.minDistance || len > controls.maxDistance) return; flyTo({pos: controls.target.clone().add(off), tgt: controls.target.clone()}, 350); },
+    reset() { flyTo(preset(lift > .5)); },
+  };
+  applyTheme(); requestAnimationFrame(frame);
+  $('#v3d').disabled = false; $('#v3d').title = '';
+  setView(HASH.get('v') === '2d' ? '2d' : '3d');
+}
 </script>
 
 </body>

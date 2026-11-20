@@ -1,8 +1,9 @@
 # Baltic Language Atlas
 
-Interactive map of 61 languages of northern and eastern Europe: families, estimated divergence dates, word comparisons and contact (loanword) links. Focus on Baltic and Finnic languages and their relation to Polish and other Slavic languages.
+Interactive 3D map of 61 languages of northern and eastern Europe: families, estimated divergence dates, word comparisons and contact (loanword) links. Focus on Baltic and Finnic languages and their relation to Polish and other Slavic languages.
 
-- **Open locally:** `baltic-language-atlas.html` (self-contained; needs internet only for fonts)
+- **Open locally:** `baltic-language-atlas.html` (data inlined; needs internet for fonts and three.js, otherwise falls back to the 2D map)
+- **3D view:** height is time. Lift the family tree out of the map, play history from 4500 BCE, follow loanword arcs. The URL hash keeps the selection (`#f=pol&c=lit&y=-800`).
 - **Published artifact:** https://claude.ai/artifact/NQaRBVdrjoJg8Jm4UeUXz5
 - **Created:** 2026-11-14
 
@@ -12,8 +13,6 @@ Interactive map of 61 languages of northern and eastern Europe: families, estima
 - `data/uralic.json` - Uralic languages and tree nodes
 - `data/baltoslavic.json` - Baltic and Slavic languages, tree nodes, Polish-Lithuanian notes
 - `data/others.json` - Germanic, Romance, Turkic languages, tree nodes, contact links
-
-The page overrides some entries of `data/others.json` at build time (native spelling of words and endonyms for Swedish, Icelandic, Faroese, Romanian, Tatar, Chuvash, Crimean Tatar, Karaim), so the page is the reference for those.
 
 ## Caveats
 
