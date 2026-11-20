@@ -1,0 +1,734 @@
+{
+ "languages": [
+  {
+   "id": "swe",
+   "name": "Swedish",
+   "endonym": "svenska",
+   "family": "Indo-European",
+   "parent": "east-norse",
+   "speakers_m": 10.5,
+   "status": "national",
+   "lat": 60.0,
+   "lon": 15.5,
+   "where": "Sweden; coastal Finland (Ostrobothnia, Uusimaa, Åland)",
+   "note": "East Norse language with a pitch accent; heavily shaped by Middle Low German in the Hanseatic era. Centuries of rule over Finland made it the main source of Germanic loanwords in Finnish and left a Swedish-speaking minority on the Finnish coast.",
+   "words": {
+    "one": "en",
+    "two": "tva",
+    "three": "tre",
+    "water": "vatten",
+    "mother": "mor",
+    "night": "natt",
+    "sun": "sol",
+    "name": "namn",
+    "heart": "hjarta",
+    "new": "ny",
+    "fish": "fisk",
+    "winter": "vinter"
+   }
+  },
+  {
+   "id": "dan",
+   "name": "Danish",
+   "endonym": "dansk",
+   "family": "Indo-European",
+   "parent": "east-norse",
+   "speakers_m": 6,
+   "status": "national",
+   "lat": 56.0,
+   "lon": 10.0,
+   "where": "Denmark; Faroe Islands and Greenland (as second language); South Schleswig minority",
+   "note": "East Norse with the stød (glottal) prosody and heavy phonological reduction; strongly influenced by Low German and High German. Its written form underlies Bokmål and was the administrative language of Norway, the Faroes and Iceland for centuries.",
+   "words": {
+    "one": "en",
+    "two": "to",
+    "three": "tre",
+    "water": "vand",
+    "mother": "mor",
+    "night": "nat",
+    "sun": "sol",
+    "name": "navn",
+    "heart": "hjerte",
+    "new": "ny",
+    "fish": "fisk",
+    "winter": "vinter"
+   }
+  },
+  {
+   "id": "nor",
+   "name": "Norwegian (Bokmal)",
+   "endonym": "norsk (bokmal)",
+   "family": "Indo-European",
+   "parent": "west-norse",
+   "speakers_m": 5,
+   "status": "national",
+   "lat": 61.0,
+   "lon": 9.0,
+   "where": "Norway (Bokmål is the majority written standard, based on Dano-Norwegian)",
+   "note": "Spoken Norwegian dialects are West Norse in origin, but Bokmål descends from Danish written during the union and is Continental Scandinavian in grammar and vocabulary. Norwegians were the Germanic neighbours of the Sami and Kven (Finnic) in the north.",
+   "words": {
+    "one": "en",
+    "two": "to",
+    "three": "tre",
+    "water": "vann",
+    "mother": "mor",
+    "night": "natt",
+    "sun": "sol",
+    "name": "navn",
+    "heart": "hjerte",
+    "new": "ny",
+    "fish": "fisk",
+    "winter": "vinter"
+   }
+  },
+  {
+   "id": "isl",
+   "name": "Icelandic",
+   "endonym": "islenska",
+   "family": "Indo-European",
+   "parent": "west-norse",
+   "speakers_m": 0.37,
+   "status": "national",
+   "lat": 64.9,
+   "lon": -18.5,
+   "where": "Iceland",
+   "note": "The most conservative living Germanic language: it keeps four cases, three genders and the full Old Norse verb inflection, and coins native words instead of borrowing. It is the closest living guide to Old Norse and early Germanic morphology.",
+   "words": {
+    "one": "einn",
+    "two": "tveir",
+    "three": "thrir",
+    "water": "vatn",
+    "mother": "modir",
+    "night": "nott",
+    "sun": "sol",
+    "name": "nafn",
+    "heart": "hjarta",
+    "new": "nyr",
+    "fish": "fiskur",
+    "winter": "vetur"
+   }
+  },
+  {
+   "id": "fao",
+   "name": "Faroese",
+   "endonym": "foroyskt",
+   "family": "Indo-European",
+   "parent": "west-norse",
+   "speakers_m": 0.07,
+   "status": "regional",
+   "lat": 62.0,
+   "lon": -6.9,
+   "where": "Faroe Islands",
+   "note": "West Norse language close to Icelandic in writing but with simplified pronunciation; written standard created by V. U. Hammershaimb in the 1840s. Danish and Low German loanwords are common, but it has little direct contact with Baltic or Finnic languages.",
+   "words": {
+    "one": "ein",
+    "two": "tveir",
+    "three": "triggir",
+    "water": "vatn",
+    "mother": "modir",
+    "night": "natt",
+    "sun": "sol",
+    "name": "navn",
+    "heart": "hjarta",
+    "new": "nyggjur",
+    "fish": "fiskur",
+    "winter": "vetur"
+   }
+  },
+  {
+   "id": "deu",
+   "name": "German",
+   "endonym": "Deutsch",
+   "family": "Indo-European",
+   "parent": "high-german",
+   "speakers_m": 95,
+   "status": "national",
+   "lat": 51.0,
+   "lon": 10.0,
+   "where": "Germany, Austria, Switzerland, South Tyrol, Luxembourg; historic minorities across Central and Eastern Europe",
+   "note": "West Germanic language that carried out the High German consonant shift (c. 500-700 CE). German settlers, towns and the Teutonic Order spread it into Poland, Bohemia, the Baltic and Transylvania, making it a major donor language across the region.",
+   "words": {
+    "one": "eins",
+    "two": "zwei",
+    "three": "drei",
+    "water": "Wasser",
+    "mother": "Mutter",
+    "night": "Nacht",
+    "sun": "Sonne",
+    "name": "Name",
+    "heart": "Herz",
+    "new": "neu",
+    "fish": "Fisch",
+    "winter": "Winter"
+   }
+  },
+  {
+   "id": "nds",
+   "name": "Low German",
+   "endonym": "Plattdutsch / Nedderdutsch",
+   "family": "Indo-European",
+   "parent": "low-german",
+   "speakers_m": 2.5,
+   "status": "regional",
+   "lat": 53.5,
+   "lon": 9.5,
+   "where": "Northern Germany and eastern Netherlands (Low Saxon); formerly the Hanseatic trade language of the Baltic",
+   "note": "Descendant of Old Saxon; it did not take part in the High German consonant shift. Middle Low German was the lingua franca of the Hanseatic League and left deep layers in Swedish, Danish, Norwegian, Estonian and Latvian.",
+   "words": {
+    "one": "een",
+    "two": "twee",
+    "three": "dree",
+    "water": "Water",
+    "mother": "Moder",
+    "night": "Nacht",
+    "sun": "Sunn",
+    "name": "Naam",
+    "heart": "Hart",
+    "new": "nie",
+    "fish": "Fisch",
+    "winter": "Winter"
+   }
+  },
+  {
+   "id": "yid",
+   "name": "Yiddish",
+   "endonym": "yidish",
+   "family": "Indo-European",
+   "parent": "high-german",
+   "speakers_m": 1.5,
+   "status": "endangered",
+   "lat": 50.5,
+   "lon": 24.0,
+   "where": "Historically Ashkenazi Jews of Poland, Lithuania, Belarus, Ukraine, Romania; today mainly Hasidic communities in Israel and North America",
+   "note": "High German-based fusion language written in Hebrew script, with Hebrew-Aramaic and a substantial Slavic component. Eastern Yiddish developed in the Slavic lands and borrowed from Polish, Ukrainian, Belarusian and Russian; Lithuanian Yiddish (Litvish) stands next to Baltic territory.",
+   "words": {
+    "one": "eyns",
+    "two": "tsvey",
+    "three": "dray",
+    "water": "vaser",
+    "mother": "mame",
+    "night": "nakht",
+    "sun": "zun",
+    "name": "nomen",
+    "heart": "harts",
+    "new": "nay",
+    "fish": "fish",
+    "winter": "vinter"
+   }
+  },
+  {
+   "id": "ron",
+   "name": "Romanian",
+   "endonym": "romana",
+   "family": "Indo-European",
+   "parent": "eastern-romance",
+   "speakers_m": 24,
+   "status": "national",
+   "lat": 45.8,
+   "lon": 25.0,
+   "where": "Romania, Moldova; communities in Ukraine, Serbia, Hungary",
+   "note": "Eastern Romance language isolated from the western Romance world; it has a postposed definite article and many Balkan sprachbund traits. About 20 percent of the core lexicon is Slavic, and it also borrowed from Hungarian, Turkish and Greek.",
+   "words": {
+    "one": "unu",
+    "two": "doi",
+    "three": "trei",
+    "water": "apa",
+    "mother": "mama",
+    "night": "noapte",
+    "sun": "soare",
+    "name": "nume",
+    "heart": "inima",
+    "new": "nou",
+    "fish": "peste",
+    "winter": "iarna"
+   }
+  },
+  {
+   "id": "tat",
+   "name": "Tatar",
+   "endonym": "tatar tele",
+   "family": "Turkic",
+   "parent": "kipchak",
+   "speakers_m": 5,
+   "status": "regional",
+   "lat": 55.8,
+   "lon": 50.0,
+   "where": "Tatarstan and the Volga-Ural region of Russia; diaspora across Russia and Central Asia",
+   "note": "Kipchak (Kipchak-Bulgar) Turkic language of the Volga Tatars, heir of the Volga Bulgar and Golden Horde cultural area. Its speakers lived beside Mari, Udmurt, Chuvash and Russians, passing many Turkic loanwords into Uralic languages and Russian.",
+   "words": {
+    "one": "ber",
+    "two": "ike",
+    "three": "oc",
+    "water": "su",
+    "mother": "ana",
+    "night": "ton",
+    "sun": "qoyas",
+    "name": "isem",
+    "heart": "yorak",
+    "new": "yana",
+    "fish": "baliq",
+    "winter": "qis"
+   }
+  },
+  {
+   "id": "chv",
+   "name": "Chuvash",
+   "endonym": "chavash chelkhi",
+   "family": "Turkic",
+   "parent": "oghur",
+   "speakers_m": 1.0,
+   "status": "regional",
+   "lat": 55.5,
+   "lon": 47.5,
+   "where": "Chuvashia and adjacent Volga regions of Russia",
+   "note": "The only surviving Oghur (Bulgar) Turkic language, with rhotacism and lambdacism (r and l where Common Turkic has z and sh). Chuvash or its Volga Bulgar ancestor supplied early Turkic loanwords to Hungarian, Mari and Udmurt.",
+   "words": {
+    "one": "per",
+    "two": "ikke",
+    "three": "visse",
+    "water": "sav",
+    "mother": null,
+    "night": null,
+    "sun": "hevel",
+    "name": "yat",
+    "heart": "cere",
+    "new": "cene",
+    "fish": "pula",
+    "winter": "hel"
+   }
+  },
+  {
+   "id": "crh",
+   "name": "Crimean Tatar",
+   "endonym": "qirimtatar tili",
+   "family": "Turkic",
+   "parent": "kipchak",
+   "speakers_m": 0.5,
+   "status": "endangered",
+   "lat": 45.0,
+   "lon": 34.0,
+   "where": "Crimea; deported communities in Uzbekistan, Turkey and Romania (Dobruja)",
+   "note": "Kipchak-Cuman Turkic language with a strong Oghuz (Turkish) layer in its southern dialect. The Crimean Khanate was a neighbour and slave-raiding power on Poland-Lithuania, Ukraine and Russia, so Crimean words entered Ukrainian, Polish and Russian.",
+   "words": {
+    "one": "bir",
+    "two": "eki",
+    "three": "uc",
+    "water": "suv",
+    "mother": "ana",
+    "night": "gece",
+    "sun": "kunes",
+    "name": "isim",
+    "heart": "yurek",
+    "new": "yani",
+    "fish": "baliq",
+    "winter": "qis"
+   }
+  },
+  {
+   "id": "kdr",
+   "name": "Karaim (Trakai)",
+   "endonym": "karaj tili",
+   "family": "Turkic",
+   "parent": "kipchak",
+   "speakers_m": 0.0001,
+   "status": "endangered",
+   "lat": 54.65,
+   "lon": 24.93,
+   "where": "Trakai and Vilnius area, Lithuania (Halych and Lutsk dialects in Ukraine are nearly extinct)",
+   "note": "Kipchak-Cuman Turkic language of the Karaite community brought to Lithuania around 1400 by Grand Duke Vytautas; it has only a few dozen speakers. Written in Hebrew, Latin and Cyrillic scripts, it absorbed Polish, Belarusian and Lithuanian words.",
+   "words": {
+    "one": "bir",
+    "two": "eki",
+    "three": "uc",
+    "water": "suv",
+    "mother": "ana",
+    "night": null,
+    "sun": "kun",
+    "name": "at",
+    "heart": null,
+    "new": null,
+    "fish": "balyk",
+    "winter": "kys"
+   }
+  }
+ ],
+ "nodes": [
+  {
+   "id": "indo-european",
+   "name": "Proto-Indo-European",
+   "parent": null,
+   "year": -3500,
+   "range": "c. 4500 - 2500 BCE (steppe model); up to c. 8000 - 6000 BCE (Anatolian model)",
+   "confidence": "low",
+   "note": "The steppe hypothesis puts the homeland north of the Black and Caspian Seas (Yamnaya) with Anatolian splitting off first, giving a breakup around 3500 BCE. Bayesian phylogenetic estimates (Bouckaert 2012; Heggarty et al. 2023) favour an older root of roughly 8000 - 6000 BCE, so dating remains disputed."
+  },
+  {
+   "id": "germanic",
+   "name": "Proto-Germanic",
+   "parent": "indo-european",
+   "year": 0,
+   "range": "c. 500 BCE - 200 CE",
+   "confidence": "medium",
+   "note": "Defined by Grimm's law and Verner's law and fixed initial stress; usually dated from the first Germanic sound shifts (c. 500 BCE) to the divergence of the North, West and East branches around the start of our era. Early runic inscriptions and loanwords in Finnic and Latin help anchor the dating."
+  },
+  {
+   "id": "north-germanic",
+   "name": "Proto-Norse / North Germanic",
+   "parent": "germanic",
+   "year": 800,
+   "range": "c. 200 - 800 CE",
+   "confidence": "medium",
+   "note": "The Elder Futhark inscriptions (from c. 200 CE) are still largely uniform, and the language shows the first real dialect split around the Viking Age. Two models exist: West Norse versus East Norse (the traditional one, based on sound changes such as diphthong monophthongisation), and Insular (Icelandic, Faroese) versus Continental (Norwegian, Swedish, Danish) Scandinavian, which better reflects later contact and mutual intelligibility."
+  },
+  {
+   "id": "west-norse",
+   "name": "West Norse",
+   "parent": "north-germanic",
+   "year": 1300,
+   "range": "c. 900 - 1400 CE",
+   "confidence": "medium",
+   "note": "Old West Norse (Old Norwegian and Old Icelandic) split with the settlement of the Faroes (c. 825) and Iceland (c. 874) and the later Danish-Norwegian union. In the Insular/Continental model Norwegian instead joins Danish and Swedish, while Icelandic and Faroese stand alone."
+  },
+  {
+   "id": "east-norse",
+   "name": "East Norse",
+   "parent": "north-germanic",
+   "year": 1200,
+   "range": "c. 900 - 1300 CE",
+   "confidence": "medium",
+   "note": "Old Swedish and Old Danish become distinct from the 11th to 13th centuries, shown in their runic and law-text records. Danish and Swedish remain closely related, and Bokmål later reconnects with the Danish side."
+  },
+  {
+   "id": "west-germanic",
+   "name": "Proto-West Germanic",
+   "parent": "germanic",
+   "year": 400,
+   "range": "c. 200 - 500 CE",
+   "confidence": "low",
+   "note": "The ancestor of English, Dutch, Frisian, Low German and High German. Whether it was a single node or a continuum (Ingvaeonic North Sea Germanic versus Weser-Rhine and Elbe Germanic) is debated; dating rests on the Migration Period."
+  },
+  {
+   "id": "low-german",
+   "name": "Old Saxon / Low German",
+   "parent": "west-germanic",
+   "year": 1200,
+   "range": "c. 800 - 1500 CE",
+   "confidence": "medium",
+   "note": "Old Saxon is recorded from the 9th century and develops into Middle Low German, the Hanseatic lingua franca of the 13th to 16th centuries. Modern Low German dialects split from this stage and later yielded to Standard German."
+  },
+  {
+   "id": "high-german",
+   "name": "High German",
+   "parent": "west-germanic",
+   "year": 1200,
+   "range": "c. 500 - 1300 CE",
+   "confidence": "medium",
+   "note": "The second (High German) consonant shift in the 6th-8th centuries separates Upper and Central German from the rest. Middle High German of c. 1100-1300 is the base of both Yiddish (via Ashkenazi settlement) and later Standard German."
+  },
+  {
+   "id": "italic",
+   "name": "Proto-Italic",
+   "parent": "indo-european",
+   "year": -1000,
+   "range": "c. 1500 - 800 BCE",
+   "confidence": "low",
+   "note": "Splits into Latino-Faliscan and Osco-Umbrian groups in the Italian peninsula; the date rests on the arrival of Italic speakers and the earliest inscriptions."
+  },
+  {
+   "id": "romance",
+   "name": "Proto-Romance / Vulgar Latin",
+   "parent": "italic",
+   "year": 500,
+   "range": "c. 200 - 800 CE",
+   "confidence": "medium",
+   "note": "The Romance languages diverge as the Western Roman Empire fragments, with the Latin written norm separating from speech between roughly the 5th and 9th centuries."
+  },
+  {
+   "id": "eastern-romance",
+   "name": "Proto-Eastern Romance (Balkan Romance)",
+   "parent": "romance",
+   "year": 1000,
+   "range": "c. 600 - 1200 CE",
+   "confidence": "low",
+   "note": "Daco-Romanian, Aromanian, Megleno-Romanian and Istro-Romanian separated after Slavic and Balkan population movements. The place and timing of the split are still contested (north vs south of the Danube)."
+  },
+  {
+   "id": "turkic",
+   "name": "Proto-Turkic",
+   "parent": null,
+   "year": -100,
+   "range": "c. 500 BCE - 200 CE",
+   "confidence": "low",
+   "note": "Homeland probably in the Altai-Sayan and Mongolia steppe; some work (Savelyev and Robbeets 2020) places the Turkic-Transeurasian origin earlier and the Turkic breakup near the last centuries BCE. The Oghur versus Common Turkic split is the first and best-supported division."
+  },
+  {
+   "id": "oghur",
+   "name": "Oghur (Bulgar) Turkic",
+   "parent": "turkic",
+   "year": 700,
+   "range": "c. 100 - 900 CE",
+   "confidence": "medium",
+   "note": "Characterised by r and l in place of Common Turkic z and sh (Chuvash hĕr 'girl' and çul 'stone' vs Turkic qız and taş). The Bulgars moved west to the Pontic steppe and the Volga, leaving loanwords in Hungarian, Slavic and Uralic; Chuvash is the only surviving member."
+  },
+  {
+   "id": "common-turkic",
+   "name": "Common Turkic",
+   "parent": "turkic",
+   "year": 600,
+   "range": "c. 200 - 1000 CE",
+   "confidence": "medium",
+   "note": "Siberian, Kipchak, Karluk and Oghuz branches emerge as the Göktürk and later steppe empires expanded. Old Turkic Orkhon inscriptions of the 8th century already show dialect differences."
+  },
+  {
+   "id": "kipchak",
+   "name": "Kipchak Turkic",
+   "parent": "common-turkic",
+   "year": 1200,
+   "range": "c. 900 - 1400 CE",
+   "confidence": "medium",
+   "note": "The Kipchak (Cuman) confederacy dominated the Pontic-Caspian steppe from the 11th century; the Codex Cumanicus (1295) is a key record. It spread to the Golden Horde and gave rise to Tatar, Crimean Tatar, Karaim, Bashkir, Kazakh and others."
+  }
+ ],
+ "contacts": [
+  {
+   "from": "lit",
+   "to": "fin",
+   "kind": "loanwords",
+   "period": "c. 1500 BCE - 500 CE (debated)",
+   "strength": 3,
+   "text": "Early Baltic loans into Proto-Finnic cover farming, kinship and the body, the best-known examples being Finnish hammas 'tooth' (Baltic *žambas, cf. Lithuanian žambas 'sharp edge'), heinä 'hay' (cf. Lithuanian šienas), morsian 'bride' (cf. Lithuanian marti), silta 'bridge' (cf. Lithuanian tiltas) and tytär 'daughter' (cf. Lithuanian duktė). Others are paimen 'shepherd' (cf. Lithuanian piemuo) and kirves 'axe' (cf. Lithuanian kirvis). Lithuanian stands in for the Baltic source, whose exact form is Proto-Baltic or West Baltic."
+  },
+  {
+   "from": "lav",
+   "to": "liv",
+   "kind": "loanwords",
+   "period": "c. 1200 CE - present",
+   "strength": 3,
+   "text": "Livonian, in daily contact with Latvian for centuries, borrowed large parts of its vocabulary and grammar from Latvian. It also kept a Finnic stress pattern shaped by the same contact; this is the best-documented case of Baltic influence on a living Finnic language."
+  },
+  {
+   "from": "liv",
+   "to": "lav",
+   "kind": "substrate",
+   "period": "c. 1000 - 1800 CE",
+   "strength": 2,
+   "text": "Latvian has fixed initial stress, a feature absent from Lithuanian, which is usually attributed to a Finnic (Livonian-type) substrate or long bilingualism. Latvian also carries Livonian loans in coastal and fishing vocabulary."
+  },
+  {
+   "from": "isl",
+   "to": "fin",
+   "kind": "loanwords",
+   "period": "c. 200 BCE - 800 CE",
+   "strength": 3,
+   "text": "Early Germanic (Proto-Germanic and Proto-Norse) gave Proto-Finnic a long loan layer: kuningas 'king' (*kuningaz), rengas 'ring' (*hringaz), kulta 'gold' (*gulþą), miekka 'sword' (*mēkijaz), lammas 'sheep' (*lamba-) and ruhtinas 'prince' (*druhtīnaz). Icelandic stands here for the conservative Germanic source, as it is the closest living language to Old Norse and early Germanic morphology."
+  },
+  {
+   "from": "swe",
+   "to": "fin",
+   "kind": "loanwords",
+   "period": "c. 1150 - present",
+   "strength": 3,
+   "text": "Seven centuries of Swedish rule in Finland brought many words of law, trade, state and school: mestari 'master' (Swedish mästare), herra 'lord' (herre), koulu 'school' (skola) and kruunu 'crown' (krona). Swedish remains a national language of Finland and the source of the Finland-Swedish minority."
+  },
+  {
+   "from": "nor",
+   "to": "sme",
+   "kind": "loanwords",
+   "period": "c. 800 CE - present",
+   "strength": 2,
+   "text": "Sami borrowed from Old Norse and Norwegian during centuries of contact along the Norwegian coast, including gonagas 'king' (Germanic *kuningaz), gárdi 'fence, farmyard' (Old Norse garðr) and mearka 'mark' (Old Norse merki). Early Proto-Sami also took Proto-Germanic words that Finnic shows too, which indicates a shared contact zone."
+  },
+  {
+   "from": "rus",
+   "to": "fin",
+   "kind": "loanwords",
+   "period": "c. 900 CE - present",
+   "strength": 2,
+   "text": "Old Russian, mediated by Karelian, supplied the Orthodox vocabulary and a handful of everyday words: risti 'cross' (Slavic *krestъ), pappi 'priest' (pop), raamattu 'Bible' (gramota), pakana 'pagan' and ikkuna 'window' (okno). The Slavic layer is smaller in Finnish than in Karelian or Estonian because Finland was oriented toward Sweden."
+  },
+  {
+   "from": "rus",
+   "to": "est",
+   "kind": "loanwords",
+   "period": "c. 900 CE - present",
+   "strength": 2,
+   "text": "Estonian took a modest Slavic layer, much of it from Old Russian via Pskov and Novgorod trade: sõber 'friend' (Slavic *sebrъ), raamat 'book' (gramota), turg 'market' (Slavic *tъrgъ) and ristima 'to baptise' (krestiti)."
+  },
+  {
+   "from": "rus",
+   "to": "krl",
+   "kind": "loanwords",
+   "period": "c. 900 CE - present",
+   "strength": 3,
+   "text": "Karelian and Veps are the Finnic languages most deeply influenced by Russian, since they lived in the Russian state and Orthodox church for a millennium. They have adopted not only nouns but also function words and discourse particles such as no 'but, well', a 'and, but' and ili 'or', and many speakers use mixed constructions."
+  },
+  {
+   "from": "rus",
+   "to": "kpv",
+   "kind": "loanwords",
+   "period": "c. 1100 CE - present",
+   "strength": 3,
+   "text": "Russian words entered Komi after the Novgorod-Moscow conquest of the Perm area, first via trade and church, later via school and administration. Everyday modern items such as stol 'table', škola 'school' and kniga 'book' are examples of the Russian layer, while discourse particles and conjunctions are also frequently borrowed."
+  },
+  {
+   "from": "rus",
+   "to": "mhr",
+   "kind": "loanwords",
+   "period": "c. 1200 CE - present",
+   "strength": 3,
+   "text": "Meadow Mari has absorbed a large Russian layer in modern vocabulary and syntax, especially after 1552 and in Soviet schooling. It also borrows Russian conjunctions and particles, and loan verbs are usually integrated with native affixes."
+  },
+  {
+   "from": "krl",
+   "to": "rus",
+   "kind": "substrate",
+   "period": "c. 800 - 1700 CE",
+   "strength": 2,
+   "text": "North Russian dialects came into contact with Finnic (Karelian, Veps, Ves, Sami and extinct Merya and Muroma) as Slavs colonised the north. Finnic left river names (Vologda, Šeksna, possibly Kostroma), words like tundra (Kildin Sami tūndar), pelmeni (Komi and Udmurt pelńań 'ear-bread') and korjuška 'smelt', and possible syntactic traits such as the u menja est' possessive and partitive-like genitives; these syntactic claims are contested."
+  },
+  {
+   "from": "nds",
+   "to": "est",
+   "kind": "loanwords",
+   "period": "c. 1200 - 1700 CE",
+   "strength": 3,
+   "text": "Middle Low German, the language of Hanseatic merchants and the Baltic German upper class, left thousands of words in Estonian: kaup 'goods, trade' (kōp), raad and raekoda 'town hall' (Rat), kook 'cake' (Kuchen), kool 'school' (schōle) and seep 'soap' (sēpe). Trade, craft, church and administration vocabulary dominate."
+  },
+  {
+   "from": "nds",
+   "to": "lav",
+   "kind": "loanwords",
+   "period": "c. 1200 - 1700 CE",
+   "strength": 3,
+   "text": "Latvian borrowed from Middle Low German via Riga and the Baltic German towns: amats 'trade, profession' (ambacht), rātsnams 'town hall' (Rathaus), spēle 'game' (Spiel) and krogs 'tavern' (krōch). German also reached Latvian through Livonian and later High German."
+  },
+  {
+   "from": "nds",
+   "to": "swe",
+   "kind": "loanwords",
+   "period": "c. 1250 - 1550 CE",
+   "strength": 3,
+   "text": "Hanseatic trade made Middle Low German the biggest single source of foreign words in medieval Swedish: betala 'to pay' (bezalen), skräddare 'tailor' (schrōder), fönster 'window', frisk 'fresh' and borgmästare 'mayor'. It also left productive prefixes and suffixes such as be-, för- and -het, so the effect on word formation was large."
+  },
+  {
+   "from": "nds",
+   "to": "dan",
+   "kind": "loanwords",
+   "period": "c. 1250 - 1550 CE",
+   "strength": 3,
+   "text": "Danish took up a similar Low German layer to Swedish, with betale 'to pay', skrædder 'tailor', frisk 'fresh', and the be- and -hed word-forming material. Because Denmark shared a border and strong ties with northern Germany, this layer is among the deepest in Scandinavia."
+  },
+  {
+   "from": "deu",
+   "to": "pol",
+   "kind": "loanwords",
+   "period": "c. 1200 CE - present",
+   "strength": 3,
+   "text": "Medieval German settlement and Magdeburg law towns gave Polish many urban and craft words: rynek 'market square' (Ring), ratusz 'town hall' (Rathaus), burmistrz 'mayor' (Bürgermeister), gmina 'municipality' (Gemeinde), szlafrok 'dressing gown' (Schlafrock) and handel 'trade'. Yiddish and Czech sometimes acted as intermediaries."
+  },
+  {
+   "from": "pol",
+   "to": "lit",
+   "kind": "loanwords",
+   "period": "c. 1387 - 1800 CE",
+   "strength": 3,
+   "text": "After the Polish-Lithuanian union the Polish nobility and church introduced many words into Lithuanian, often via Ruthenian (Old Belarusian) first: ponas 'lord, Mr' (Polish pan), stalas 'table' (stół), pinigas 'money' (Slavic *pěnęzь) and bažnyčia 'church' (Slavic *božьnica). A 19th-century purist campaign removed many of them."
+  },
+  {
+   "from": "pol",
+   "to": "bel",
+   "kind": "loanwords",
+   "period": "c. 1400 - 1800 CE",
+   "strength": 3,
+   "text": "Polish was the language of the Polish-Lithuanian Commonwealth's elites, and Belarusian absorbed its vocabulary and some syntax. Examples include ratuša 'town hall' (ratusz), rynak 'market' (rynek) and dziakuj 'thank you' (dziękuję), and these forms stand apart from Russian."
+  },
+  {
+   "from": "pol",
+   "to": "ukr",
+   "kind": "loanwords",
+   "period": "c. 1400 - 1800 CE",
+   "strength": 3,
+   "text": "Ukrainian took many Polish and German words through the Commonwealth, including rynok 'market' (rynek), ratuša 'town hall' (ratusz) and djakuju 'thank you' (dziękuję). Polish vocabulary helps explain why the Ukrainian lexicon differs from Russian."
+  },
+  {
+   "from": "tat",
+   "to": "udm",
+   "kind": "loanwords",
+   "period": "c. 900 - 1700 CE",
+   "strength": 3,
+   "text": "Udmurt and Mari took a large Turkic loan layer from Volga Bulgar, Chuvash and later Tatar, covering trade, animal husbandry, tools and social life. The Bulgar-Chuvash layer is older and the Tatar layer later."
+  },
+  {
+   "from": "chv",
+   "to": "mhr",
+   "kind": "loanwords",
+   "period": "c. 900 - 1700 CE",
+   "strength": 3,
+   "text": "Meadow Mari contains a large Chuvash and Volga Bulgar layer, making it one of the most Turkic-influenced Uralic languages; the Mari-Chuvash area is often treated as a Volga-Kama contact zone. Mari syntax (e.g. postpositions, converb use) shows some Turkic-type influence."
+  },
+  {
+   "from": "chv",
+   "to": "hun",
+   "kind": "loanwords",
+   "period": "c. 500 - 900 CE",
+   "strength": 3,
+   "text": "Hungarian took many Oghur Turkic words before the conquest of the Carpathian Basin, mostly agrarian and stock-farming terms: ökör 'ox' (Oghur *ökür), bika 'bull', búza 'wheat' and gyűrű 'ring' (Turkic *yüzük). The source is Old Chuvash or Bulgar, not Common Turkic, as the r and l correspondences show."
+  },
+  {
+   "from": "tat",
+   "to": "rus",
+   "kind": "loanwords",
+   "period": "c. 1240 - 1700 CE",
+   "strength": 3,
+   "text": "The Mongol-Tatar period and Turkic neighbours in the Volga and steppe zone gave Russian dozens of words: den'gi 'money' (Turkic tenge), karandaš 'pencil' (kara 'black' and taš 'stone'), sunduk 'chest', tovar 'goods' and bašmak 'shoe'. Tatar and other Kipchak languages were the main source."
+  },
+  {
+   "from": "crh",
+   "to": "pol",
+   "kind": "loanwords",
+   "period": "c. 1400 - 1800 CE",
+   "strength": 2,
+   "text": "Polish took Turkic words through the Crimean Khanate, Ottoman contacts and the Lipka Tatars: ułan 'lancer' (Turkic oğlan), kozak 'Cossack' (qazaq), bohater 'hero' (via Ukrainian from Turkic bahadur) and jar 'ravine' (yar). Some items came via Ottoman Turkish or Ukrainian."
+  },
+  {
+   "from": "pol",
+   "to": "yid",
+   "kind": "loanwords",
+   "period": "c. 1100 - 1940 CE",
+   "strength": 3,
+   "text": "Eastern Yiddish has a Slavic component of a few percent, but it is deep in the daily lexicon and word formation: bobe 'grandmother' (baba), bulbe 'potato' (bulba), shmate 'rag' (Polish szmata), nudnik 'bore' (nudny) and blintse 'pancake' (blin). The suffixes -nik and -ke are productive; sources include Polish, Ukrainian, Belarusian and Russian."
+  },
+  {
+   "from": "ukr",
+   "to": "ron",
+   "kind": "loanwords",
+   "period": "c. 600 - 1500 CE",
+   "strength": 3,
+   "text": "A large Slavic layer entered Romanian, mostly from South Slavic (Bulgarian, Old Church Slavonic) but also East Slavic; Ukrainian stands here for the closest East Slavic donor. Typical items are iubi 'to love' (*ljubiti), a trăi 'to live' (*trajati), prieten 'friend' (*prijatelь), slab 'weak', glas 'voice' and dragoste 'love'. Hungarian later added items such as oraş 'town' (város)."
+  },
+  {
+   "from": "ces",
+   "to": "hun",
+   "kind": "loanwords",
+   "period": "c. 800 - 1300 CE",
+   "strength": 3,
+   "text": "Hungarian took early Slavic loans on arrival in the Carpathian Basin, from South Slavic and West Slavic (Slovak and Czech area) neighbours: király 'king' (*kralь), szerda 'Wednesday' (*sereda), csütörtök 'Thursday' (*četvrьtъkъ), péntek 'Friday' (*pętъkъ), barát 'friend' (*bratъ) and malom 'mill' (*mъlinъ). The donor is often South or West Slavic and cannot be pinned to one language."
+  },
+  {
+   "from": "est",
+   "to": "lav",
+   "kind": "sprachbund",
+   "period": "c. 1000 BCE - present",
+   "strength": 2,
+   "text": "The Circum-Baltic area links Finnic, Baltic, Slavic and Germanic into a region with shared features: object alternations such as the genitive of negation (Russian, Latvian, Finnic partitive), a 'have' construction with a possessor, inflected participles and evidential or reported-speech markers, and rich case systems. Estonian and Latvian are the clearest pair, since Livonian bridges them. Dahl and Koptjevskaja-Tamm (2001) define the area."
+  },
+  {
+   "from": "lit",
+   "to": "bel",
+   "kind": "shared-innovation",
+   "period": "c. 2500 - 500 BCE",
+   "strength": 2,
+   "text": "Baltic and Slavic share a number of innovations from a Balto-Slavic ancestor, which could be a common proto-language or long-term contact: shared vocabulary like Lithuanian rankà and Slavic *rǫka 'hand', galvà and *golva 'head', žemė and *zemja 'earth', common accent paradigms (Hirt's and Winter's laws) and the genitive singular in -a. Whether Balto-Slavic is a true node or an areal group is still disputed; Belarusian stands here as the nearest Slavic neighbour."
+  }
+ ]
+}
