@@ -2,14 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Static, no-build project: one page, `baltic-language-atlas/baltic-language-atlas.html` (CSS, JS, map geometry and all data inlined; three.js 0.170.0 from jsdelivr via an importmap), plus reference data in `baltic-language-atlas/data/{uralic,baltoslavic,others}.json`. No package manager, tests, linter or git repo. The page is published as a claude.ai artifact (URL in `README.md`); Claude regenerates/patches the HTML and republishes it. Use `/verify-app` before publishing and `/deploy` to publish.
+Static, no-build project: one page, `baltic-language-atlas/baltic-language-atlas.html` (CSS, JS, map geometry and all data inlined; three.js 0.170.0 from jsdelivr via an importmap), plus reference data in `baltic-language-atlas/data/{uralic,baltoslavic,others}.json`. No package manager, tests or linter; one stdlib build script, `tools/build_data.py`. The page is published as a claude.ai artifact (URL in `README.md`); Claude regenerates/patches the HTML and republishes it. Use `/verify-app` before publishing and `/deploy` to publish.
 
 ## Data rules
 
 - **Never guess word lists.** Leave words empty for small or extinct languages rather than inventing forms. Dates and word forms are unverified model knowledge; flag low-confidence ones in the `note` field.
-- **Keep JSON and inlined HTML data in sync.** Any data change goes in both places.
+- **JSON is the golden source.** Edit `data/*.json`, then run `uv run tools/build_data.py` to regenerate the inlined `const D = ...` line (derives `g` and map `x, y` from the lineage and `lat, lon`); `--check` reports drift. Never hand-edit that line.
+- **Provenance:** every word needs a citation in the language's `sources` map or its concept in `low_confidence`; nodes, contacts and cards carry `sources` (list) and `low_confidence` (bool). The UI shows these as hover tooltips.
 - Each tree node is defined once, in the JSON file of its family (`indo-european` lives in `others.json`).
-- Language schema: `id, name, endonym, family, parent, speakers_m, status, lat, lon, where, note, words`. Each file also has tree nodes; `others.json` has top-level `languages`, `nodes`, `contacts` (loanword links).
+- Language schema: `id, name, endonym, family, parent, speakers_m, status, lat, lon, where, note, words, sources, low_confidence`. Each file also has tree nodes; `others.json` has top-level `languages`, `nodes`, `contacts` (loanword links).
 - Verify in a browser (light and dark mode) before republishing.
 
 ## Gotchas

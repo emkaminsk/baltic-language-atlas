@@ -11,7 +11,7 @@ There is no test suite. Run these checks from the project root (`baltic-language
    ```bash
    for f in baltic-language-atlas/data/*.json; do python3 -m json.tool "$f" >/dev/null && echo "ok $f"; done
    ```
-2. **Sync**: for every language or node touched, confirm the inlined data in the HTML matches the JSON exactly.
+2. **Sync**: `uv run tools/build_data.py --check` must print `in sync` (if not, run it without `--check`).
 3. **Serve and look**
    ```bash
    cd baltic-language-atlas && python3 -m http.server 8000
@@ -23,6 +23,6 @@ There is no test suite. Run these checks from the project root (`baltic-language
    - layout holds at ~375px width
    - 3D view: dots render, click picks, "Lift family tree" and "Play history" animate, contact arcs show; the 2D toggle still works
    - Headless Chromium needs WebGL flags: `--use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader` (run Playwright with `uv run --with playwright`)
-4. **Data rules**: no invented word lists; low-confidence dates flagged in `note`.
+4. **Data rules**: no invented word lists; every word, node, contact and card has `sources` or a `low_confidence` flag; hovering a word in the comparison table, a lineage entry, a tree node or a contact shows its source tooltip.
 
 Report what was checked and anything that failed. Fix the page or data, not the check.

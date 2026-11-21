@@ -1,56 +1,1206 @@
 {
- "languages": [
-  {"id":"lit","name":"Lithuanian","endonym":"lietuvių kalba","family":"Indo-European","parent":"lithuanian-grp","speakers_m":2.8,"status":"national","lat":55.2,"lon":24.0,"where":"Lithuania; diaspora (UK, USA, Ireland, Poland, Belarus)","note":"The most conservative living Indo-European language in its case system and pitch accent; standard language based on Western Aukštaitian. Long contact with Polish and Belarusian (Ruthenian) during the Grand Duchy and the Commonwealth left Slavic loans in religion and administration.","words":{"one":"vienas","two":"du","three":"trys","water":"vanduo","mother":"motina","night":"naktis","sun":"saulė","name":"vardas","heart":"širdis","new":"naujas","fish":"žuvis","winter":"žiema"}},
-  {"id":"sgs","name":"Samogitian","endonym":"žemaitiu kalba","family":"Indo-European","parent":"lithuanian-grp","speakers_m":0.4,"status":"regional","lat":55.8,"lon":22.3,"where":"Samogitia (western Lithuania)","note":"Western dialect group of Lithuanian, regarded by many as a separate language because of distinct vowels and consonants and low mutual intelligibility with Aukštaitian. Its speakers were relatively little touched by Polish compared with eastern Lithuania.","words":{"one":"vėins","two":"dū","three":null,"water":"ondou","mother":null,"night":null,"sun":null,"name":null,"heart":null,"new":null,"fish":null,"winter":null}},
-  {"id":"lav","name":"Latvian","endonym":"latviešu valoda","family":"Indo-European","parent":"latvian-grp","speakers_m":1.5,"status":"national","lat":56.9,"lon":24.8,"where":"Latvia; diaspora","note":"Has fixed initial stress, probably under Livonian (Finnic) influence, and has lost the neuter and the dual. Carries many Finnic (Livonian) and Low German loans plus later Russian and Polish ones.","words":{"one":"viens","two":"divi","three":"trīs","water":"ūdens","mother":"māte","night":"nakts","sun":"saule","name":"vārds","heart":"sirds","new":"jauns","fish":"zivs","winter":"ziema"}},
-  {"id":"ltg","name":"Latgalian","endonym":"latgaliešu volūda","family":"Indo-European","parent":"latvian-grp","speakers_m":0.15,"status":"regional","lat":56.5,"lon":27.0,"where":"Latgale (eastern Latvia)","note":"Eastern variety of Latvian with its own standard, Catholic tradition and separate orthography; was shaped by Polish-Lithuanian rule and contact with Belarusian and Russian. Considered by some a separate language, by others a Latvian dialect.","words":{"one":"vīns","two":"divi","three":null,"water":null,"mother":"mōte","night":"nakts","sun":"saule","name":"vōrds","heart":"sirds","new":"jauns","fish":"zivs","winter":null}},
-  {"id":"prg","name":"Old Prussian","endonym":"prūsiskan","family":"Indo-European","parent":"west-baltic","speakers_m":0,"status":"extinct","lat":54.5,"lon":20.5,"where":"Former East Prussia (Sambia, Natangia, now Kaliningrad region and northern Poland)","note":"West Baltic language, extinct in the 17th-18th centuries after Germanization of the Prussians; known from the Elbing Vocabulary (c. 1400) and 16th-century catechisms. Revived in small hobby communities.","words":{"one":"ains","two":"dwai","three":"tris","water":"wundan","mother":"mothe","night":"naktin","sun":"saule","name":"emnes","heart":"seyr","new":null,"fish":"suckis","winter":"semo"}},
-  {"id":"xsv","name":"Sudovian (Yotvingian)","endonym":null,"family":"Indo-European","parent":"west-baltic","speakers_m":0,"status":"extinct","lat":54.0,"lon":23.3,"where":"Sudovia/Yotvingia: around Suwałki, Podlasie, western Belarus and southwest Lithuania","note":"West Baltic, close to Old Prussian; died out around the 16th-17th centuries under Polish, Lithuanian and Belarusian pressure. Known only from a short 19th-century wordlist and place names.","words":{"one":null,"two":null,"three":null,"water":null,"mother":null,"night":null,"sun":null,"name":null,"heart":null,"new":null,"fish":null,"winter":null}},
-  {"id":"cur","name":"Curonian","endonym":null,"family":"Indo-European","parent":"east-baltic","speakers_m":0,"status":"extinct","lat":56.5,"lon":21.5,"where":"Courland (western Latvia) and the Curonian Spit","note":"Poorly attested Baltic language, extinct by the 17th century and absorbed into Latvian and Lithuanian; its classification as East or West Baltic is disputed, and some treat it as an intermediate variety. Its substratum helped shape Latvian.","words":{"one":null,"two":null,"three":null,"water":null,"mother":null,"night":null,"sun":null,"name":null,"heart":null,"new":null,"fish":null,"winter":null}},
-  {"id":"pol","name":"Polish","endonym":"polski","family":"Indo-European","parent":"lechitic","speakers_m":40,"status":"national","lat":52.0,"lon":19.5,"where":"Poland; diaspora (UK, USA, Germany, Lithuania, Belarus, Ukraine)","note":"Lechitic West Slavic language that kept nasal vowels and has fixed penultimate stress. Contact with German, Czech, Latin, French, and with Ruthenian and Lithuanian in the Commonwealth, left many loans and, for Lithuanian and Belarusian, strong Polish influence.","words":{"one":"jeden","two":"dwa","three":"trzy","water":"woda","mother":"matka","night":"noc","sun":"słońce","name":"imię","heart":"serce","new":"nowy","fish":"ryba","winter":"zima"}},
-  {"id":"csb","name":"Kashubian","endonym":"kaszëbsczi","family":"Indo-European","parent":"lechitic","speakers_m":0.1,"status":"regional","lat":54.3,"lon":18.0,"where":"Kashubia, Pomerania (northern Poland, around Gdańsk)","note":"The surviving Pomeranian Lechitic language, with a recognized regional status in Poland. Heavily influenced by Low German.","words":{"one":"jeden","two":"dwa","three":"trzë","water":"wòda","mother":"matka","night":"noc","sun":"słuńce","name":"miono","heart":"serce","new":"nowi","fish":"ryba","winter":"zëma"}},
-  {"id":"szl","name":"Silesian","endonym":"ślōnskŏ gŏdka","family":"Indo-European","parent":"lechitic","speakers_m":0.5,"status":"regional","lat":50.4,"lon":18.4,"where":"Upper Silesia (southern Poland, a little in Czechia)","note":"Lechitic variety closely related to Polish, treated by many as a language of its own; strongly influenced by German and Czech through centuries of Bohemian and Prussian/German rule. Not officially recognized in Poland.","words":{"one":"jedyn","two":"dwa","three":"trzi","water":"woda","mother":"matka","night":"noc","sun":"słōnko","name":"miano","heart":"serce","new":"nowy","fish":"ryba","winter":"zima"}},
-  {"id":"pox","name":"Polabian","endonym":null,"family":"Indo-European","parent":"lechitic","speakers_m":0,"status":"extinct","lat":52.9,"lon":11.2,"where":"Lower Elbe region (Lüneburg Wendland, northern Germany)","note":"West Slavic language of the Drevani, extinct in the mid-18th century under German assimilation; recorded by Hennig, Hilferding and Parum Schultze. Many forms were heavily Germanized and spelled by German ears, so I give no word forms.","words":{"one":null,"two":null,"three":null,"water":null,"mother":null,"night":null,"sun":null,"name":null,"heart":null,"new":null,"fish":null,"winter":null}},
-  {"id":"hsb","name":"Upper Sorbian","endonym":"hornjoserbšćina","family":"Indo-European","parent":"sorbian","speakers_m":0.013,"status":"endangered","lat":51.2,"lon":14.4,"where":"Upper Lusatia around Bautzen (Saxony, Germany)","note":"West Slavic minority language surrounded by German for a millennium; keeps the dual and aorist/imperfect tenses. Many German loans and calques.","words":{"one":"jedyn","two":"dwaj","three":"tři","water":"woda","mother":"mać","night":"nóc","sun":"słónco","name":"mjeno","heart":"wutroba","new":"nowy","fish":"ryba","winter":"zyma"}},
-  {"id":"dsb","name":"Lower Sorbian","endonym":"dolnoserbšćina","family":"Indo-European","parent":"sorbian","speakers_m":0.007,"status":"endangered","lat":51.8,"lon":14.3,"where":"Lower Lusatia around Cottbus (Brandenburg, Germany)","note":"Severely endangered West Slavic language with the dual still in use; it is closer to Polish in some features than Upper Sorbian is. Heavy German influence on vocabulary and syntax.","words":{"one":"jaden","two":"dwa","three":"tśi","water":"wóda","mother":"maś","night":"noc","sun":"slyńco","name":"mě","heart":"wutšoba","new":"nowy","fish":"ryba","winter":"zyma"}},
-  {"id":"ces","name":"Czech","endonym":"čeština","family":"Indo-European","parent":"czech-slovak","speakers_m":10.7,"status":"national","lat":49.8,"lon":15.5,"where":"Czechia; diaspora","note":"West Slavic language with a long literary tradition and strong German influence on vocabulary. Lost the nasal vowels and has fixed initial stress and phonemic vowel length.","words":{"one":"jeden","two":"dva","three":"tři","water":"voda","mother":"matka","night":"noc","sun":"slunce","name":"jméno","heart":"srdce","new":"nový","fish":"ryba","winter":"zima"}},
-  {"id":"slk","name":"Slovak","endonym":"slovenčina","family":"Indo-European","parent":"czech-slovak","speakers_m":5.2,"status":"national","lat":48.7,"lon":19.5,"where":"Slovakia; diaspora","note":"Mutually almost fully intelligible with Czech. Influenced by Hungarian, German and Czech.","words":{"one":"jeden","two":"dva","three":"tri","water":"voda","mother":"matka","night":"noc","sun":"slnko","name":"meno","heart":"srdce","new":"nový","fish":"ryba","winter":"zima"}},
-  {"id":"bel","name":"Belarusian","endonym":"belaruskaja mova","family":"Indo-European","parent":"east-slavic","speakers_m":3.5,"status":"national","lat":53.5,"lon":28.0,"where":"Belarus; Białystok region of Poland; diaspora","note":"East Slavic language with akanye and a Latin-script tradition (Łacinka). Its older Ruthenian form was the chancery language of the Grand Duchy of Lithuania, with heavy Polish influence.","words":{"one":"adzin","two":"dva","three":"try","water":"vada","mother":"maci","night":"noč","sun":"sonca","name":"imia","heart":"serca","new":"novy","fish":"ryba","winter":"zima"}},
-  {"id":"ukr","name":"Ukrainian","endonym":"ukraїnska mova","family":"Indo-European","parent":"east-slavic","speakers_m":37,"status":"national","lat":49.0,"lon":31.0,"where":"Ukraine; diaspora (Poland, Canada, USA, Brazil)","note":"East Slavic language with many Polish, German and Latin loans through Commonwealth-era contact. Fully retains vocative case and distinct reflexes of Proto-Slavic vowels (i for old o/e in closed syllables).","words":{"one":"odyn","two":"dva","three":"try","water":"voda","mother":"maty","night":"nich","sun":"sontse","name":"imia","heart":"sertse","new":"novyi","fish":"ryba","winter":"zyma"}},
-  {"id":"rue","name":"Rusyn","endonym":"rusinskŷj jazŷk","family":"Indo-European","parent":"east-slavic","speakers_m":0.6,"status":"regional","lat":48.9,"lon":22.0,"where":"Carpathians (Prešov region of Slovakia, Subcarpathia, southeastern Poland), Vojvodina and Croatia","note":"East Slavic variety, regarded by some as a language and by others as a Ukrainian dialect group; standardized in Slovakia and Vojvodina. Shaped by Slovak, Polish and Hungarian contact.","words":{"one":null,"two":"dva","three":"try","water":"voda","mother":null,"night":null,"sun":null,"name":null,"heart":null,"new":null,"fish":"ryba","winter":null}},
-  {"id":"rus","name":"Russian","endonym":"russkii iazyk","family":"Indo-European","parent":"east-slavic","speakers_m":150,"status":"national","lat":55.7,"lon":37.6,"where":"Russia and widely across the former USSR; diaspora","note":"The largest Slavic language, with a Church Slavonic layer in its literary vocabulary. Has absorbed Finnic substrate toponymy in the north, Turkic and Germanic loans (Old Norse via Varangians), and many Western European loans.","words":{"one":"odin","two":"dva","three":"tri","water":"voda","mother":"mat'","night":"noch'","sun":"solntse","name":"imia","heart":"serdtse","new":"novyi","fish":"ryba","winter":"zima"}},
-  {"id":"slv","name":"Slovene","endonym":"slovenščina","family":"Indo-European","parent":"west-south-slavic","speakers_m":2.1,"status":"national","lat":46.1,"lon":14.8,"where":"Slovenia; border areas of Italy, Austria, Hungary; diaspora","note":"South Slavic language that preserves the dual and has pitch accent in many dialects. Close contact with German, Italian and Hungarian.","words":{"one":"en","two":"dva","three":"trije","water":"voda","mother":"mati","night":"noč","sun":"sonce","name":"ime","heart":"srce","new":"nov","fish":"riba","winter":"zima"}},
-  {"id":"hbs","name":"Serbo-Croatian","endonym":"srpskohrvatski / hrvatskosrpski","family":"Indo-European","parent":"west-south-slavic","speakers_m":20,"status":"national","lat":44.5,"lon":18.5,"where":"Serbia, Croatia, Bosnia and Herzegovina, Montenegro; diaspora","note":"A shared pluricentric language with four standards (Bosnian, Croatian, Montenegrin, Serbian), based on Shtokavian dialects. Has pitch accent, and absorbed Turkish, Italian and German loans.","words":{"one":"jedan","two":"dva","three":"tri","water":"voda","mother":"majka","night":"noć","sun":"sunce","name":"ime","heart":"srce","new":"nov","fish":"riba","winter":"zima"}},
-  {"id":"bul","name":"Bulgarian","endonym":"balgarski ezik","family":"Indo-European","parent":"east-south-slavic","speakers_m":8,"status":"national","lat":42.7,"lon":25.5,"where":"Bulgaria; Balkans, diaspora","note":"South Slavic language with a postpositive article and no noun case; part of the Balkan sprachbund with Romanian, Albanian and Greek. Heir of Old Church Slavonic.","words":{"one":"edin","two":"dva","three":"tri","water":"voda","mother":"majka","night":"nosht","sun":"slantse","name":"ime","heart":"sartse","new":"nov","fish":"riba","winter":"zima"}},
-  {"id":"mkd","name":"Macedonian","endonym":"makedonski jazik","family":"Indo-European","parent":"east-south-slavic","speakers_m":1.7,"status":"national","lat":41.6,"lon":21.7,"where":"North Macedonia; Albania, Greece, diaspora","note":"South Slavic language standardized in 1945, with a triple definite article and no noun case; part of the Balkan sprachbund. Close to Bulgarian in the east dialect continuum.","words":{"one":"eden","two":"dva","three":"tri","water":"voda","mother":"majka","night":"nok","sun":"sonce","name":"ime","heart":"srce","new":"nov","fish":"riba","winter":"zima"}}
- ],
- "nodes": [
-  {"id":"balto-slavic","name":"Proto-Balto-Slavic","parent":"indo-european","year":-1400,"range":"c. 2000 – 1000 BCE","confidence":"medium","note":"Shared satem phonology, accentual innovations and morphology (e.g. Winter's law, the genitive in -ā-stems) point to a common stage; glottochronological and Bayesian estimates (Gray & Atkinson 2003, Chang et al. 2015) give about 1500-1000 BCE for the split."},
-  {"id":"baltic","name":"Proto-Baltic","parent":"balto-slavic","year":-1000,"range":"c. 1500 – 500 BCE","confidence":"low","note":"Many scholars now doubt that Baltic is a single node: West Baltic, East Baltic and Slavic may be three coordinate branches, with similarities from retention and contact. Included for convenience only."},
-  {"id":"west-baltic","name":"West Baltic","parent":"baltic","year":-300,"range":"c. 500 BCE – 0","confidence":"low","note":"Old Prussian and Sudovian share archaic features lost in East Baltic, but both are poorly attested and the date is a rough guess from the later attestation and from archaeology (Western Baltic Barrow culture)."},
-  {"id":"east-baltic","name":"East Baltic","parent":"baltic","year":700,"range":"c. 500 – 900 CE","confidence":"medium","note":"Lithuanian and Latvian split gradually through the first millennium CE; Gray & Atkinson put it near 600 CE. Selonian, Semigallian and Curonian were absorbed later into Lithuanian and Latvian."},
-  {"id":"lithuanian-grp","name":"Lithuanian (Aukštaitian and Samogitian)","parent":"east-baltic","year":1300,"range":"c. 1100 – 1500 CE","confidence":"low","note":"Samogitian differences grew after the 13th century as western and eastern dialects diverged; the split is dialectal and the date is approximate."},
-  {"id":"latvian-grp","name":"Latvian (Latvian and Latgalian)","parent":"east-baltic","year":1500,"range":"c. 1200 – 1700 CE","confidence":"low","note":"Latgalian diverged from Latvian after the Reformation, as Latgale remained Catholic under Polish-Lithuanian rule while the rest of Latvia was Lutheran; the dialects themselves are older."},
-  {"id":"slavic","name":"Proto-Slavic","parent":"balto-slavic","year":600,"range":"c. 500 – 700 CE","confidence":"high","note":"Slavic unity ended with the rapid expansion of the 6th-7th centuries CE; Byzantine and Gothic records, loanwords and Old Church Slavonic (9th century) support the date, though late Common Slavic dialect differences persisted to about 900 CE."},
-  {"id":"west-slavic","name":"West Slavic","parent":"slavic","year":800,"range":"c. 700 – 900 CE","confidence":"medium","note":"Lechitic, Czech-Slovak and Sorbian groups diverged from the 8th-9th century as the Slavs settled between the Elbe and the Carpathians; shared innovations such as the dl/tl retention and *tj > c are the main evidence."},
-  {"id":"lechitic","name":"Lechitic","parent":"west-slavic","year":1000,"range":"c. 900 – 1200 CE","confidence":"medium","note":"Pomeranian (Kashubian), Polish and Polabian diverged around the formation of the Polish state; Polabian and Kashubian are separated by the later Polish and German settlement dates (12th-13th c. Ostsiedlung)."},
-  {"id":"czech-slovak","name":"Czech-Slovak","parent":"west-slavic","year":1100,"range":"c. 1000 – 1300 CE","confidence":"low","note":"Czech and Slovak form a continuum divided gradually from the 11th-14th century; Slovak was only codified in the 19th century (Štúr 1843)."},
-  {"id":"sorbian","name":"Sorbian","parent":"west-slavic","year":1100,"range":"c. 1000 – 1300 CE","confidence":"low","note":"Upper and Lower Sorbian diverged in the Middle Ages with German settlement of Lusatia; written Sorbian begins in the 16th century."},
-  {"id":"east-slavic","name":"East Slavic","parent":"slavic","year":1300,"range":"c. 1100 – 1500 CE","confidence":"medium","note":"Old East Slavic (Rus) unity broke up after the Mongol invasion, as Ukrainian and Belarusian were shaped within Lithuania and Poland while Russian formed around Moscow."},
-  {"id":"south-slavic","name":"South Slavic","parent":"slavic","year":800,"range":"c. 700 – 900 CE","confidence":"medium","note":"The Balkan Slavic settlement of the 6th-7th century left two groups; Old Church Slavonic (9th c., Thessalonica dialect) shows an early eastern South Slavic type."},
-  {"id":"west-south-slavic","name":"West South Slavic","parent":"south-slavic","year":1000,"range":"c. 900 – 1100 CE","confidence":"low","note":"Slovene and Serbo-Croatian form a dialect continuum (Kajkavian, Čakavian, Shtokavian), with separation visible in the Freising manuscripts (c. 1000) and later records."},
-  {"id":"east-south-slavic","name":"East South Slavic","parent":"south-slavic","year":1200,"range":"c. 1000 – 1300 CE","confidence":"low","note":"Bulgarian and Macedonian form a continuum; the contemporary split is largely political and standardization (Macedonian 1945), with a vague dialect boundary."}
- ],
- "polish_lithuanian": [
-  {"topic":"Common origin, distant relation","text":"Polish and Lithuanian are Balto-Slavic cousins, not siblings: they separated about 3,000 or more years ago, and Polish has since changed through contact with Germanic, Latin and Czech. The same is true of Latvian, and the gap is far wider than that between Polish and Czech."},
-  {"topic":"Shared inherited vocabulary","text":"Many basic words are clearly cognate: Lith. ranka ~ Pol. ręka, galva ~ głowa, ežeras ~ jezioro, žiema ~ zima, širdis ~ serce, vilkas ~ wilk, ugnis ~ ogień, naktis ~ noc, sūnus ~ syn, devyni ~ dziewięć, dešimt ~ dziesięć. In Latvian the same series gives roka, galva, ezers, ziema, sirds, nakts."},
-  {"topic":"Satem languages","text":"Both belong to the satem group, where PIE palatal *ḱ became a sibilant: Lith. šimtas and širdis, Pol. sto and serce, against Latin centum and cor. Both also take part in the 'ruki' sound change (s became š after r, u, k, i), which is another feature shared across the Balto-Slavic area."},
-  {"topic":"What Lithuanian preserves","text":"Lithuanian keeps old nominative endings (-as, -is, -ys, -us), as in vilkas, where Proto-Slavic had *vьlkъ and Polish lost the vowel (wilk). It has seven cases including a locative, and dialects keep the illative (miškan, 'into the forest'), and the dual survives in dialects. Verb forms like esmi 'I am' look much older than Polish jestem."},
-  {"topic":"Pitch accent","text":"Lithuanian keeps a free, mobile accent with tonal contrasts (acute versus circumflex), which comes close to the Proto-Balto-Slavic system. Polish gave up pitch and lost mobility, and has fixed stress on the penultimate syllable; Czech and Slovak went to initial stress. Latvian has initial stress, probably because of Finnic contact."},
-  {"topic":"What Polish changed","text":"Slavic developed palatalizations, nasal vowels (ę, ą), a law of open syllables that simplified clusters and endings, and a rich verbal aspect system. Lithuanian ranka keeps a plain n, while Polish ręka turned the vowel plus nasal into a nasal vowel."},
-  {"topic":"Loanwords from Polish and Ruthenian into Lithuanian","text":"During the Grand Duchy and the Commonwealth (Union of Lublin 1569) Lithuanian absorbed Slavic terms via Ruthenian and Polish: ponas 'mister' from pan, ponia from pani, bažnyčia 'church', kryžius 'cross', knyga 'book'. Polish was the language of the nobility, and Lithuanian was pushed into rural use before the 19th century revival."},
-  {"topic":"Loanwords from Lithuanian into Polish","text":"Polish took far fewer Lithuanian words, mainly in Vilnius-region speech and foods: kindziuk (from kindziukas) and cepeliny (via Lithuanian from German Zeppelin). Place names and the personal names of the Lithuanian nobility (Radziwiłł, Giedymin, etc.) also entered Polish culture."},
-  {"topic":"Latvian and the Finnic layer","text":"Latvian is closer to Lithuanian than to Polish but diverged during the first millennium CE: fixed initial stress, lost neuter and dual, and many Livonian (Finnic) and Low German loans, so Latvian and Lithuanian are also not mutually intelligible without study."},
-  {"topic":"Why they are not mutually intelligible","text":"Shared cognates are few and masked by regular sound change, so a Pole hears ranka and guesses ręka but cannot parse a sentence. Grammar and function words differ: other case endings, different words for 'and' and 'with' (ir, su vs i, z), pronouns (aš, mes vs ja, my; tu and ty happen to match) and many unrelated roots (duona 'bread' vs chleb, kaip 'how' vs jak). Vocabulary overlap is nowhere near the level of Polish-Czech."}
- ]
+  "languages": [
+    {
+      "id": "lit",
+      "name": "Lithuanian",
+      "endonym": "lietuvių kalba",
+      "family": "Indo-European",
+      "parent": "lithuanian-grp",
+      "speakers_m": 2.8,
+      "status": "national",
+      "lat": 55.2,
+      "lon": 24.0,
+      "where": "Lithuania; diaspora (UK, USA, Ireland, Poland, Belarus)",
+      "note": "The most conservative living Indo-European language in its case system and pitch accent; standard language based on Western Aukštaitian. Long contact with Polish and Belarusian (Ruthenian) during the Grand Duchy and the Commonwealth left Slavic loans in religion and administration.",
+      "words": {
+        "one": "vienas",
+        "two": "du",
+        "three": "trys",
+        "water": "vanduo",
+        "mother": "motina",
+        "night": "naktis",
+        "sun": "saulė",
+        "name": "vardas",
+        "heart": "širdis",
+        "new": "naujas",
+        "fish": "žuvis",
+        "winter": "žiema"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "sgs",
+      "name": "Samogitian",
+      "endonym": "žemaitiu kalba",
+      "family": "Indo-European",
+      "parent": "lithuanian-grp",
+      "speakers_m": 0.4,
+      "status": "regional",
+      "lat": 55.8,
+      "lon": 22.3,
+      "where": "Samogitia (western Lithuania)",
+      "note": "Western dialect group of Lithuanian, regarded by many as a separate language because of distinct vowels and consonants and low mutual intelligibility with Aukštaitian. Its speakers were relatively little touched by Polish compared with eastern Lithuania. Low-confidence word forms (no published source found): two (dū).",
+      "words": {
+        "one": "vėins",
+        "two": "dū",
+        "three": null,
+        "water": "ondou",
+        "mother": null,
+        "night": null,
+        "sun": null,
+        "name": null,
+        "heart": "šėrdės",
+        "new": "naus",
+        "fish": null,
+        "winter": null
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'",
+        "water": "Wiktionary translations of 'water'",
+        "heart": "Wiktionary translations of 'heart'",
+        "new": "Wiktionary translations of 'new'"
+      },
+      "low_confidence": [
+        "two"
+      ]
+    },
+    {
+      "id": "lav",
+      "name": "Latvian",
+      "endonym": "latviešu valoda",
+      "family": "Indo-European",
+      "parent": "latvian-grp",
+      "speakers_m": 1.5,
+      "status": "national",
+      "lat": 56.9,
+      "lon": 24.8,
+      "where": "Latvia; diaspora",
+      "note": "Has fixed initial stress, probably under Livonian (Finnic) influence, and has lost the neuter and the dual. Carries many Finnic (Livonian) and Low German loans plus later Russian and Polish ones.",
+      "words": {
+        "one": "viens",
+        "two": "divi",
+        "three": "trīs",
+        "water": "ūdens",
+        "mother": "māte",
+        "night": "nakts",
+        "sun": "saule",
+        "name": "vārds",
+        "heart": "sirds",
+        "new": "jauns",
+        "fish": "zivs",
+        "winter": "ziema"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "ltg",
+      "name": "Latgalian",
+      "endonym": "latgaliešu volūda",
+      "family": "Indo-European",
+      "parent": "latvian-grp",
+      "speakers_m": 0.15,
+      "status": "regional",
+      "lat": 56.5,
+      "lon": 27.0,
+      "where": "Latgale (eastern Latvia)",
+      "note": "Eastern variety of Latvian with its own standard, Catholic tradition and separate orthography; was shaped by Polish-Lithuanian rule and contact with Belarusian and Russian. Considered by some a separate language, by others a Latvian dialect.",
+      "words": {
+        "one": "vīns",
+        "two": "divi",
+        "three": "treis",
+        "water": "iudiņs",
+        "mother": "muote",
+        "night": "nakts",
+        "sun": "saule",
+        "name": "vuords",
+        "heart": "sirds",
+        "new": "jauns",
+        "fish": "zivs",
+        "winter": "zīma"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'",
+        "two": "Wiktionary: div (Latgalian)",
+        "three": "Wiktionary: treis (Latgalian)",
+        "water": "Wiktionary: iudiņs (Latgalian)",
+        "mother": "Wiktionary: muote (Latgalian)",
+        "night": "Wiktionary translations of 'night'",
+        "sun": "Wiktionary translations of 'sun'",
+        "name": "Wiktionary: vuords (Latgalian)",
+        "heart": "Wiktionary translations of 'heart'",
+        "new": "Wiktionary translations of 'new'",
+        "fish": "Wiktionary translations of 'fish'",
+        "winter": "Wiktionary translations of 'winter'"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "prg",
+      "name": "Old Prussian",
+      "endonym": "prūsiskan",
+      "family": "Indo-European",
+      "parent": "west-baltic",
+      "speakers_m": 0,
+      "status": "extinct",
+      "lat": 54.5,
+      "lon": 20.5,
+      "where": "Former East Prussia (Sambia, Natangia, now Kaliningrad region and northern Poland)",
+      "note": "West Baltic language, extinct in the 17th-18th centuries after Germanization of the Prussians; known from the Elbing Vocabulary (c. 1400) and 16th-century catechisms. Revived in small hobby communities. Low-confidence word forms (no published source found): three (tris), sun (saule), name (emnes).",
+      "words": {
+        "one": "ains",
+        "two": "dwai",
+        "three": "tris",
+        "water": "wundan",
+        "mother": "mothe",
+        "night": "naktin",
+        "sun": "saule",
+        "name": "emnes",
+        "heart": "seyr",
+        "new": null,
+        "fish": "suckis",
+        "winter": "semo"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'",
+        "two": "Wiktionary: dwai (Old Prussian)",
+        "water": "Wiktionary translations of 'water'",
+        "mother": "Wiktionary: mothe (Old Prussian)",
+        "night": "Wiktionary: naktin (Old Prussian)",
+        "heart": "Wiktionary translations of 'heart'",
+        "fish": "Wiktionary: suckis (Old Prussian)",
+        "winter": "Wiktionary translations of 'winter'"
+      },
+      "low_confidence": [
+        "three",
+        "sun",
+        "name"
+      ]
+    },
+    {
+      "id": "xsv",
+      "name": "Sudovian (Yotvingian)",
+      "endonym": null,
+      "family": "Indo-European",
+      "parent": "west-baltic",
+      "speakers_m": 0,
+      "status": "extinct",
+      "lat": 54.0,
+      "lon": 23.3,
+      "where": "Sudovia/Yotvingia: around Suwałki, Podlasie, western Belarus and southwest Lithuania",
+      "note": "West Baltic, close to Old Prussian; died out around the 16th-17th centuries under Polish, Lithuanian and Belarusian pressure. Known only from a short 19th-century wordlist and place names.",
+      "words": {
+        "one": null,
+        "two": null,
+        "three": null,
+        "water": null,
+        "mother": null,
+        "night": null,
+        "sun": null,
+        "name": null,
+        "heart": null,
+        "new": null,
+        "fish": null,
+        "winter": null
+      },
+      "sources": {},
+      "low_confidence": []
+    },
+    {
+      "id": "cur",
+      "name": "Curonian",
+      "endonym": null,
+      "family": "Indo-European",
+      "parent": "east-baltic",
+      "speakers_m": 0,
+      "status": "extinct",
+      "lat": 56.5,
+      "lon": 21.5,
+      "where": "Courland (western Latvia) and the Curonian Spit",
+      "note": "Poorly attested Baltic language, extinct by the 17th century and absorbed into Latvian and Lithuanian; its classification as East or West Baltic is disputed, and some treat it as an intermediate variety. Its substratum helped shape Latvian.",
+      "words": {
+        "one": null,
+        "two": null,
+        "three": null,
+        "water": null,
+        "mother": null,
+        "night": null,
+        "sun": null,
+        "name": null,
+        "heart": null,
+        "new": null,
+        "fish": null,
+        "winter": null
+      },
+      "sources": {},
+      "low_confidence": []
+    },
+    {
+      "id": "pol",
+      "name": "Polish",
+      "endonym": "polski",
+      "family": "Indo-European",
+      "parent": "lechitic",
+      "speakers_m": 40,
+      "status": "national",
+      "lat": 52.0,
+      "lon": 19.5,
+      "where": "Poland; diaspora (UK, USA, Germany, Lithuania, Belarus, Ukraine)",
+      "note": "Lechitic West Slavic language that kept nasal vowels and has fixed penultimate stress. Contact with German, Czech, Latin, French, and with Ruthenian and Lithuanian in the Commonwealth, left many loans and, for Lithuanian and Belarusian, strong Polish influence.",
+      "words": {
+        "one": "jeden",
+        "two": "dwa",
+        "three": "trzy",
+        "water": "woda",
+        "mother": "matka",
+        "night": "noc",
+        "sun": "słońce",
+        "name": "imię",
+        "heart": "serce",
+        "new": "nowy",
+        "fish": "ryba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "csb",
+      "name": "Kashubian",
+      "endonym": "kaszëbsczi",
+      "family": "Indo-European",
+      "parent": "lechitic",
+      "speakers_m": 0.1,
+      "status": "regional",
+      "lat": 54.3,
+      "lon": 18.0,
+      "where": "Kashubia, Pomerania (northern Poland, around Gdańsk)",
+      "note": "The surviving Pomeranian Lechitic language, with a recognized regional status in Poland. Heavily influenced by Low German.",
+      "words": {
+        "one": "jeden",
+        "two": "dwa",
+        "three": "trzë",
+        "water": "wòda",
+        "mother": "matka",
+        "night": "noc",
+        "sun": "słuńce",
+        "name": "miono",
+        "heart": "serce",
+        "new": "nowi",
+        "fish": "rëba",
+        "winter": "zëma"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'",
+        "two": "Wiktionary translations of 'two'",
+        "three": "Wiktionary translations of 'three'",
+        "water": "Wiktionary translations of 'water'",
+        "mother": "Wiktionary: matka (Kashubian)",
+        "night": "Wiktionary translations of 'night'",
+        "sun": "Wiktionary translations of 'sun'",
+        "name": "Wiktionary translations of 'name'",
+        "heart": "Wiktionary translations of 'heart'",
+        "new": "Wiktionary translations of 'new'",
+        "fish": "Wiktionary: rëba (Kashubian)",
+        "winter": "Wiktionary translations of 'winter'"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "szl",
+      "name": "Silesian",
+      "endonym": "ślōnskŏ gŏdka",
+      "family": "Indo-European",
+      "parent": "lechitic",
+      "speakers_m": 0.5,
+      "status": "regional",
+      "lat": 50.4,
+      "lon": 18.4,
+      "where": "Upper Silesia (southern Poland, a little in Czechia)",
+      "note": "Lechitic variety closely related to Polish, treated by many as a language of its own; strongly influenced by German and Czech through centuries of Bohemian and Prussian/German rule. Not officially recognized in Poland. Low-confidence word forms (no published source found): winter (zima).",
+      "words": {
+        "one": "jedyn",
+        "two": "dwa",
+        "three": "trzi",
+        "water": "woda",
+        "mother": "matka",
+        "night": "noc",
+        "sun": "słōńce",
+        "name": "miano",
+        "heart": "serce",
+        "new": "nowy",
+        "fish": "ryba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary: jedyn (Silesian)",
+        "two": "Wiktionary: dwa (Silesian)",
+        "three": "Wiktionary: trzi (Silesian)",
+        "water": "Wiktionary translations of 'water'",
+        "mother": "Wiktionary translations of 'mother'",
+        "night": "Wiktionary translations of 'night'",
+        "sun": "Wiktionary: słōńce (Silesian)",
+        "name": "Wiktionary translations of 'name'",
+        "heart": "Wiktionary translations of 'heart'",
+        "new": "Wiktionary translations of 'new'",
+        "fish": "Wiktionary: ryba (Silesian)"
+      },
+      "low_confidence": [
+        "winter"
+      ]
+    },
+    {
+      "id": "pox",
+      "name": "Polabian",
+      "endonym": null,
+      "family": "Indo-European",
+      "parent": "lechitic",
+      "speakers_m": 0,
+      "status": "extinct",
+      "lat": 52.9,
+      "lon": 11.2,
+      "where": "Lower Elbe region (Lüneburg Wendland, northern Germany)",
+      "note": "West Slavic language of the Drevani, extinct in the mid-18th century under German assimilation; recorded by Hennig, Hilferding and Parum Schultze. Many forms were heavily Germanized and spelled by German ears, so I give no word forms.",
+      "words": {
+        "one": "jadån",
+        "two": null,
+        "three": null,
+        "water": "vådă",
+        "mother": "motai",
+        "night": "nüc",
+        "sun": null,
+        "name": null,
+        "heart": null,
+        "new": null,
+        "fish": null,
+        "winter": "zaimă"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'",
+        "water": "Wiktionary translations of 'water'",
+        "mother": "Wiktionary translations of 'mother'",
+        "night": "Wiktionary translations of 'night'",
+        "winter": "Wiktionary translations of 'winter'"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "hsb",
+      "name": "Upper Sorbian",
+      "endonym": "hornjoserbšćina",
+      "family": "Indo-European",
+      "parent": "sorbian",
+      "speakers_m": 0.013,
+      "status": "endangered",
+      "lat": 51.2,
+      "lon": 14.4,
+      "where": "Upper Lusatia around Bautzen (Saxony, Germany)",
+      "note": "West Slavic minority language surrounded by German for a millennium; keeps the dual and aorist/imperfect tenses. Many German loans and calques.",
+      "words": {
+        "one": "jedyn",
+        "two": "dwaj",
+        "three": "tři",
+        "water": "woda",
+        "mother": "mać",
+        "night": "nóc",
+        "sun": "słónco",
+        "name": "mjeno",
+        "heart": "wutroba",
+        "new": "nowy",
+        "fish": "ryba",
+        "winter": "zyma"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'",
+        "two": "Wiktionary translations of 'two'",
+        "three": "Wiktionary translations of 'three'",
+        "water": "Wiktionary translations of 'water'",
+        "mother": "Wiktionary translations of 'mother'",
+        "night": "Wiktionary translations of 'night'",
+        "sun": "Wiktionary translations of 'sun'",
+        "name": "Wiktionary translations of 'name'",
+        "heart": "Wiktionary translations of 'heart'",
+        "new": "Wiktionary translations of 'new'",
+        "fish": "Wiktionary translations of 'fish'",
+        "winter": "Wiktionary translations of 'winter'"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "dsb",
+      "name": "Lower Sorbian",
+      "endonym": "dolnoserbšćina",
+      "family": "Indo-European",
+      "parent": "sorbian",
+      "speakers_m": 0.007,
+      "status": "endangered",
+      "lat": 51.8,
+      "lon": 14.3,
+      "where": "Lower Lusatia around Cottbus (Brandenburg, Germany)",
+      "note": "Severely endangered West Slavic language with the dual still in use; it is closer to Polish in some features than Upper Sorbian is. Heavy German influence on vocabulary and syntax.",
+      "words": {
+        "one": "jaden",
+        "two": "dwa",
+        "three": "tśi",
+        "water": "wóda",
+        "mother": "maś",
+        "night": "noc",
+        "sun": "słyńco",
+        "name": "mě",
+        "heart": "wutšoba",
+        "new": "nowy",
+        "fish": "ryba",
+        "winter": "zyma"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'",
+        "two": "Wiktionary translations of 'two'",
+        "three": "Wiktionary translations of 'three'",
+        "water": "Wiktionary translations of 'water'",
+        "mother": "Wiktionary translations of 'mother'",
+        "night": "Wiktionary translations of 'night'",
+        "sun": "Wiktionary: słyńco (Lower Sorbian)",
+        "name": "Wiktionary translations of 'name'",
+        "heart": "Wiktionary translations of 'heart'",
+        "new": "Wiktionary translations of 'new'",
+        "fish": "Wiktionary translations of 'fish'",
+        "winter": "Wiktionary translations of 'winter'"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "ces",
+      "name": "Czech",
+      "endonym": "čeština",
+      "family": "Indo-European",
+      "parent": "czech-slovak",
+      "speakers_m": 10.7,
+      "status": "national",
+      "lat": 49.8,
+      "lon": 15.5,
+      "where": "Czechia; diaspora",
+      "note": "West Slavic language with a long literary tradition and strong German influence on vocabulary. Lost the nasal vowels and has fixed initial stress and phonemic vowel length.",
+      "words": {
+        "one": "jeden",
+        "two": "dva",
+        "three": "tři",
+        "water": "voda",
+        "mother": "matka",
+        "night": "noc",
+        "sun": "slunce",
+        "name": "jméno",
+        "heart": "srdce",
+        "new": "nový",
+        "fish": "ryba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "slk",
+      "name": "Slovak",
+      "endonym": "slovenčina",
+      "family": "Indo-European",
+      "parent": "czech-slovak",
+      "speakers_m": 5.2,
+      "status": "national",
+      "lat": 48.7,
+      "lon": 19.5,
+      "where": "Slovakia; diaspora",
+      "note": "Mutually almost fully intelligible with Czech. Influenced by Hungarian, German and Czech.",
+      "words": {
+        "one": "jeden",
+        "two": "dva",
+        "three": "tri",
+        "water": "voda",
+        "mother": "matka",
+        "night": "noc",
+        "sun": "slnko",
+        "name": "meno",
+        "heart": "srdce",
+        "new": "nový",
+        "fish": "ryba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "bel",
+      "name": "Belarusian",
+      "endonym": "belaruskaja mova",
+      "family": "Indo-European",
+      "parent": "east-slavic",
+      "speakers_m": 3.5,
+      "status": "national",
+      "lat": 53.5,
+      "lon": 28.0,
+      "where": "Belarus; Białystok region of Poland; diaspora",
+      "note": "East Slavic language with akanye and a Latin-script tradition (Łacinka). Its older Ruthenian form was the chancery language of the Grand Duchy of Lithuania, with heavy Polish influence.",
+      "words": {
+        "one": "adzin",
+        "two": "dva",
+        "three": "try",
+        "water": "vada",
+        "mother": "maci",
+        "night": "noč",
+        "sun": "sonca",
+        "name": "imia",
+        "heart": "serca",
+        "new": "novy",
+        "fish": "ryba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "ukr",
+      "name": "Ukrainian",
+      "endonym": "ukraїnska mova",
+      "family": "Indo-European",
+      "parent": "east-slavic",
+      "speakers_m": 37,
+      "status": "national",
+      "lat": 49.0,
+      "lon": 31.0,
+      "where": "Ukraine; diaspora (Poland, Canada, USA, Brazil)",
+      "note": "East Slavic language with many Polish, German and Latin loans through Commonwealth-era contact. Fully retains vocative case and distinct reflexes of Proto-Slavic vowels (i for old o/e in closed syllables).",
+      "words": {
+        "one": "odyn",
+        "two": "dva",
+        "three": "try",
+        "water": "voda",
+        "mother": "maty",
+        "night": "nich",
+        "sun": "sontse",
+        "name": "imia",
+        "heart": "sertse",
+        "new": "novyi",
+        "fish": "ryba",
+        "winter": "zyma"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "rue",
+      "name": "Rusyn",
+      "endonym": "rusinskŷj jazŷk",
+      "family": "Indo-European",
+      "parent": "east-slavic",
+      "speakers_m": 0.6,
+      "status": "regional",
+      "lat": 48.9,
+      "lon": 22.0,
+      "where": "Carpathians (Prešov region of Slovakia, Subcarpathia, southeastern Poland), Vojvodina and Croatia",
+      "note": "East Slavic variety, regarded by some as a language and by others as a Ukrainian dialect group; standardized in Slovakia and Vojvodina. Shaped by Slovak, Polish and Hungarian contact. Low-confidence word forms (no published source found): two (dva), three (try), water (voda), fish (ryba).",
+      "words": {
+        "one": null,
+        "two": "dva",
+        "three": "try",
+        "water": "voda",
+        "mother": null,
+        "night": null,
+        "sun": null,
+        "name": null,
+        "heart": null,
+        "new": null,
+        "fish": "ryba",
+        "winter": null
+      },
+      "sources": {},
+      "low_confidence": [
+        "two",
+        "three",
+        "water",
+        "fish"
+      ]
+    },
+    {
+      "id": "rus",
+      "name": "Russian",
+      "endonym": "russkii iazyk",
+      "family": "Indo-European",
+      "parent": "east-slavic",
+      "speakers_m": 150,
+      "status": "national",
+      "lat": 55.7,
+      "lon": 37.6,
+      "where": "Russia and widely across the former USSR; diaspora",
+      "note": "The largest Slavic language, with a Church Slavonic layer in its literary vocabulary. Has absorbed Finnic substrate toponymy in the north, Turkic and Germanic loans (Old Norse via Varangians), and many Western European loans.",
+      "words": {
+        "one": "odin",
+        "two": "dva",
+        "three": "tri",
+        "water": "voda",
+        "mother": "mat'",
+        "night": "noch'",
+        "sun": "solntse",
+        "name": "imia",
+        "heart": "serdtse",
+        "new": "novyi",
+        "fish": "ryba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "slv",
+      "name": "Slovene",
+      "endonym": "slovenščina",
+      "family": "Indo-European",
+      "parent": "west-south-slavic",
+      "speakers_m": 2.1,
+      "status": "national",
+      "lat": 46.1,
+      "lon": 14.8,
+      "where": "Slovenia; border areas of Italy, Austria, Hungary; diaspora",
+      "note": "South Slavic language that preserves the dual and has pitch accent in many dialects. Close contact with German, Italian and Hungarian.",
+      "words": {
+        "one": "en",
+        "two": "dva",
+        "three": "trije",
+        "water": "voda",
+        "mother": "mati",
+        "night": "noč",
+        "sun": "sonce",
+        "name": "ime",
+        "heart": "srce",
+        "new": "nov",
+        "fish": "riba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "hbs",
+      "name": "Serbo-Croatian",
+      "endonym": "srpskohrvatski / hrvatskosrpski",
+      "family": "Indo-European",
+      "parent": "west-south-slavic",
+      "speakers_m": 20,
+      "status": "national",
+      "lat": 44.5,
+      "lon": 18.5,
+      "where": "Serbia, Croatia, Bosnia and Herzegovina, Montenegro; diaspora",
+      "note": "A shared pluricentric language with four standards (Bosnian, Croatian, Montenegrin, Serbian), based on Shtokavian dialects. Has pitch accent, and absorbed Turkish, Italian and German loans.",
+      "words": {
+        "one": "jedan",
+        "two": "dva",
+        "three": "tri",
+        "water": "voda",
+        "mother": "majka",
+        "night": "noć",
+        "sun": "sunce",
+        "name": "ime",
+        "heart": "srce",
+        "new": "nov",
+        "fish": "riba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "bul",
+      "name": "Bulgarian",
+      "endonym": "balgarski ezik",
+      "family": "Indo-European",
+      "parent": "east-south-slavic",
+      "speakers_m": 8,
+      "status": "national",
+      "lat": 42.7,
+      "lon": 25.5,
+      "where": "Bulgaria; Balkans, diaspora",
+      "note": "South Slavic language with a postpositive article and no noun case; part of the Balkan sprachbund with Romanian, Albanian and Greek. Heir of Old Church Slavonic.",
+      "words": {
+        "one": "edin",
+        "two": "dva",
+        "three": "tri",
+        "water": "voda",
+        "mother": "majka",
+        "night": "nosht",
+        "sun": "slantse",
+        "name": "ime",
+        "heart": "sartse",
+        "new": "nov",
+        "fish": "riba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "two": "Wiktionary translations of 'two'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "three": "Wiktionary translations of 'three'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "water": "Wiktionary translations of 'water'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "mother": "Wiktionary translations of 'mother'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "night": "Wiktionary translations of 'night'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "sun": "Wiktionary translations of 'sun'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "name": "Wiktionary translations of 'name'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "heart": "Wiktionary translations of 'heart'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "new": "Wiktionary translations of 'new'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "fish": "Wiktionary translations of 'fish'; NorthEuraLex 0.9 (Dellert et al. 2020)",
+        "winter": "Wiktionary translations of 'winter'; NorthEuraLex 0.9 (Dellert et al. 2020)"
+      },
+      "low_confidence": []
+    },
+    {
+      "id": "mkd",
+      "name": "Macedonian",
+      "endonym": "makedonski jazik",
+      "family": "Indo-European",
+      "parent": "east-south-slavic",
+      "speakers_m": 1.7,
+      "status": "national",
+      "lat": 41.6,
+      "lon": 21.7,
+      "where": "North Macedonia; Albania, Greece, diaspora",
+      "note": "South Slavic language standardized in 1945, with a triple definite article and no noun case; part of the Balkan sprachbund. Close to Bulgarian in the east dialect continuum.",
+      "words": {
+        "one": "eden",
+        "two": "dva",
+        "three": "tri",
+        "water": "voda",
+        "mother": "majka",
+        "night": "nok",
+        "sun": "sonce",
+        "name": "ime",
+        "heart": "srce",
+        "new": "nov",
+        "fish": "riba",
+        "winter": "zima"
+      },
+      "sources": {
+        "one": "Wiktionary translations of 'one'",
+        "two": "Wiktionary translations of 'two'",
+        "three": "Wiktionary translations of 'three'",
+        "water": "Wiktionary translations of 'water'",
+        "mother": "Wiktionary translations of 'mother'",
+        "night": "Wiktionary translations of 'night'",
+        "sun": "Wiktionary translations of 'sun'",
+        "name": "Wiktionary translations of 'name'",
+        "heart": "Wiktionary translations of 'heart'",
+        "new": "Wiktionary translations of 'new'",
+        "fish": "Wiktionary translations of 'fish'",
+        "winter": "Wiktionary translations of 'winter'"
+      },
+      "low_confidence": []
+    }
+  ],
+  "nodes": [
+    {
+      "id": "balto-slavic",
+      "name": "Proto-Balto-Slavic",
+      "parent": "indo-european",
+      "year": -1400,
+      "range": "c. 2000 – 1000 BCE",
+      "confidence": "medium",
+      "note": "Shared satem phonology, accentual innovations and morphology (e.g. Winter's law, the genitive in -ā-stems) point to a common stage; glottochronological and Bayesian estimates (Gray & Atkinson 2003, Chang et al. 2015) give about 1500-1000 BCE for the split.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (Balto-Slavic ~1400 BCE; Starostin 1210 BCE cited therein)",
+        "Gray & Atkinson 2003, Nature 426 (via Wikipedia)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "baltic",
+      "name": "Proto-Baltic",
+      "parent": "balto-slavic",
+      "year": -1000,
+      "range": "c. 1500 – 500 BCE",
+      "confidence": "low",
+      "note": "Many scholars now doubt that Baltic is a single node: West Baltic, East Baltic and Slavic may be three coordinate branches, with similarities from retention and contact. Included for convenience only.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (Prussian vs central Baltic 920 BCE; 10th-8th c. BCE)",
+        "Girdenis & Mažiulis 1994, via Novotná & Blažek 2007 (-910±340)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "west-baltic",
+      "name": "West Baltic",
+      "parent": "baltic",
+      "year": -300,
+      "range": "c. 500 BCE – 0",
+      "confidence": "low",
+      "note": "Old Prussian and Sudovian share archaic features lost in East Baltic, but both are poorly attested and the date is a rough guess from the later attestation and from archaeology (Western Baltic Barrow culture). No published date was found for this specific split; the date is a low-confidence estimate.",
+      "sources": [],
+      "low_confidence": true
+    },
+    {
+      "id": "east-baltic",
+      "name": "East Baltic",
+      "parent": "baltic",
+      "year": 700,
+      "range": "c. 500 – 900 CE",
+      "confidence": "medium",
+      "note": "Lithuanian and Latvian split gradually through the first millennium CE; glottochronological studies put it near 600 CE (Novotná & Blažek 2007) or 700 CE (Girdenis & Mažiulis 1994). Selonian, Semigallian and Curonian were absorbed later into Lithuanian and Latvian.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (Latvian/Lithuanian c. 600 CE)",
+        "Girdenis & Mažiulis 1994, via Novotná & Blažek 2007 (c. 700 CE)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "lithuanian-grp",
+      "name": "Lithuanian (Aukštaitian and Samogitian)",
+      "parent": "east-baltic",
+      "year": 1300,
+      "range": "c. 600 – 1500 CE",
+      "confidence": "low",
+      "note": "Samogitian differences grew after the 13th century as western and eastern dialects diverged; the split is dialectal and the date is approximate.",
+      "sources": [
+        "Girdenis 1994, Baltistica (Žemaičių savarankiškos raidos pradžia)",
+        "Zinkevičius (late-divergence view), via Pabrėža 2023, Baltic Forum"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "latvian-grp",
+      "name": "Latvian (Latvian and Latgalian)",
+      "parent": "east-baltic",
+      "year": 1500,
+      "range": "c. 1200 – 1700 CE",
+      "confidence": "low",
+      "note": "Latgalian diverged from Latvian after the Reformation, as Latgale remained Catholic under Polish-Lithuanian rule while the rest of Latvia was Lutheran; the dialects themselves are older.",
+      "sources": [
+        "Latgalian literary tradition from early 17th c. (via Wikipedia, Latgale / Latvian Embassy history page)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "slavic",
+      "name": "Proto-Slavic",
+      "parent": "balto-slavic",
+      "year": 600,
+      "range": "c. 500 – 700 CE",
+      "confidence": "high",
+      "note": "Slavic unity ended with the rapid expansion of the 6th-7th centuries CE; Byzantine and Gothic records, loanwords and Old Church Slavonic (9th century) support the date, though late Common Slavic dialect differences persisted to about 900 CE.",
+      "sources": [
+        "Holzer / Kortlandt periodisation (via Wikipedia, History of the Slavic languages)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "west-slavic",
+      "name": "West Slavic",
+      "parent": "slavic",
+      "year": 900,
+      "range": "c. 800 – 1000 CE",
+      "confidence": "low",
+      "note": "Lechitic, Czech-Slovak and Sorbian groups diverged from the 8th-9th century as the Slavs settled between the Elbe and the Carpathians; shared innovations such as the dl/tl retention and *tj > c are the main evidence. The date follows the glottochronological estimate of Novotná & Blažek 2007; lexicostatistics on modern standard languages tends to date the break-up of dialect continua late.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (West Slavic disintegration end 9th-10th c.; West/South separation mid-8th c.)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "lechitic",
+      "name": "Lechitic",
+      "parent": "west-slavic",
+      "year": 1000,
+      "range": "c. 900 – 1200 CE",
+      "confidence": "low",
+      "note": "Pomeranian (Kashubian), Polish and Polabian diverged around the formation of the Polish state; Polabian and Kashubian are separated by the later Polish and German settlement dates (12th-13th c. Ostsiedlung). No published date was found for this specific split; the date is a low-confidence estimate.",
+      "sources": [],
+      "low_confidence": true
+    },
+    {
+      "id": "czech-slovak",
+      "name": "Czech-Slovak",
+      "parent": "west-slavic",
+      "year": 1400,
+      "range": "c. 1100 – 1500 CE",
+      "confidence": "low",
+      "note": "Czech and Slovak form a continuum divided gradually from the 11th-14th century; Slovak was only codified in the 19th century (Štúr 1843). The date follows the glottochronological estimate of Novotná & Blažek 2007; lexicostatistics on modern standard languages tends to date the break-up of dialect continua late.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (Czech/Slovak ~1390 CE)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "sorbian",
+      "name": "Sorbian",
+      "parent": "west-slavic",
+      "year": 1600,
+      "range": "c. 1200 – 1700 CE",
+      "confidence": "low",
+      "note": "Upper and Lower Sorbian diverged in the Middle Ages with German settlement of Lusatia; written Sorbian begins in the 16th century. The date follows the glottochronological estimate of Novotná & Blažek 2007; lexicostatistics on modern standard languages tends to date the break-up of dialect continua late.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (Upper/Lower Lusatian ~1630 CE)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "east-slavic",
+      "name": "East Slavic",
+      "parent": "slavic",
+      "year": 1300,
+      "range": "c. 1000 – 1500 CE",
+      "confidence": "low",
+      "note": "Old East Slavic (Rus) unity broke up after the Mongol invasion, as Ukrainian and Belarusian were shaped within Lithuania and Poland while Russian formed around Moscow.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (Russian vs Ukrainian-Belarusian ~1070 CE; Ukr/Blr 1630)",
+        "Old East Slavic to 13th-14th c. (via Wikipedia)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "south-slavic",
+      "name": "South Slavic",
+      "parent": "slavic",
+      "year": 1000,
+      "range": "c. 900 – 1100 CE",
+      "confidence": "low",
+      "note": "The Balkan Slavic settlement of the 6th-7th century left two groups; Old Church Slavonic (9th c., Thessalonica dialect) shows an early eastern South Slavic type. The date follows the glottochronological estimate of Novotná & Blažek 2007; lexicostatistics on modern standard languages tends to date the break-up of dialect continua late.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (South Slavic disintegration early 11th c., ~1020; West/South separation c. 750)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "west-south-slavic",
+      "name": "West South Slavic",
+      "parent": "south-slavic",
+      "year": 1400,
+      "range": "c. 1200 – 1500 CE",
+      "confidence": "low",
+      "note": "Slovene and Serbo-Croatian form a dialect continuum (Kajkavian, Čakavian, Shtokavian), with separation visible in the Freising manuscripts (c. 1000) and later records. The date follows the glottochronological estimate of Novotná & Blažek 2007; lexicostatistics on modern standard languages tends to date the break-up of dialect continua late.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (Slovene vs Serbo-Croatian ~1390 CE)"
+      ],
+      "low_confidence": false
+    },
+    {
+      "id": "east-south-slavic",
+      "name": "East South Slavic",
+      "parent": "south-slavic",
+      "year": 1200,
+      "range": "c. 1000 – 1300 CE",
+      "confidence": "low",
+      "note": "Bulgarian and Macedonian form a continuum; the contemporary split is largely political and standardization (Macedonian 1945), with a vague dialect boundary.",
+      "sources": [
+        "Novotná & Blažek 2007, Baltistica 42(2) (Bulgarian/Macedonian ~1220 CE)"
+      ],
+      "low_confidence": false
+    }
+  ],
+  "polish_lithuanian": [
+    {
+      "topic": "Common origin, distant relation",
+      "text": "Polish and Lithuanian are Balto-Slavic cousins, not siblings: they separated about 3,000 or more years ago, and Polish has since changed through contact with Germanic, Latin and Czech. The same is true of Latvian, and the gap is far wider than that between Polish and Czech.",
+      "sources": [
+        "Wikipedia: Balto-Slavic languages"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "Shared inherited vocabulary",
+      "text": "Many basic words are clearly cognate: Lith. ranka ~ Pol. ręka, galva ~ głowa, ežeras ~ jezioro, žiema ~ zima, širdis ~ serce, vilkas ~ wilk, ugnis ~ ogień, naktis ~ noc, sūnus ~ syn, devyni ~ dziewięć, dešimt ~ dziesięć. In Latvian the same series gives roka, galva, ezers, ziema, sirds, nakts.",
+      "sources": [
+        "Derksen 2008, Etymological Dictionary of the Slavic Inherited Lexicon",
+        "Wiktionary: vilkas, šimtas"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "Satem languages",
+      "text": "Both belong to the satem group, where PIE palatal *ḱ became a sibilant: Lith. šimtas and širdis, Pol. sto and serce, against Latin centum and cor. Both also take part in the 'ruki' sound change (s became š after r, u, k, i), which is another feature shared across the Balto-Slavic area.",
+      "sources": [
+        "Wikipedia: Satem languages",
+        "Wikipedia: Ruki sound law"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "What Lithuanian preserves",
+      "text": "Lithuanian keeps old nominative endings (-as, -is, -ys, -us), as in vilkas, where Proto-Slavic had *vьlkъ and Polish lost the vowel (wilk). It has seven cases including a locative, and dialects keep the illative (miškan, 'into the forest'), and the dual survives in dialects. Verb forms like esmi 'I am' look much older than Polish jestem.",
+      "sources": [
+        "Wikipedia: Lithuanian grammar"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "Pitch accent",
+      "text": "Lithuanian keeps a free, mobile accent with tonal contrasts (acute versus circumflex), which comes close to the Proto-Balto-Slavic system. Polish gave up pitch and lost mobility, and has fixed stress on the penultimate syllable; Czech and Slovak went to initial stress. Latvian has initial stress, probably because of Finnic contact.",
+      "sources": [
+        "Wikipedia: Lithuanian phonology; Polish phonology"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "What Polish changed",
+      "text": "Slavic developed palatalizations, nasal vowels (ę, ą), a law of open syllables that simplified clusters and endings, and a rich verbal aspect system. Lithuanian ranka keeps a plain n, while Polish ręka turned the vowel plus nasal into a nasal vowel.",
+      "sources": [
+        "Wikipedia: Proto-Slavic"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "Loanwords from Polish and Ruthenian into Lithuanian",
+      "text": "During the Grand Duchy and the Commonwealth (Union of Lublin 1569) Lithuanian absorbed Slavic terms via Ruthenian and Polish: ponas 'mister' from pan, ponia from pani, bažnyčia 'church', kryžius 'cross', knyga 'book'. Polish was the language of the nobility, and Lithuanian was pushed into rural use before the 19th century revival.",
+      "sources": [
+        "Wiktionary: ponas, bažnyčia, kryžius, knyga (Lithuanian), etymology"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "Loanwords from Lithuanian into Polish",
+      "text": "Polish took far fewer Lithuanian words, mainly in Vilnius-region speech and foods: kindziuk (from kindziukas) and cepeliny (via Lithuanian from German Zeppelin). Place names and the personal names of the Lithuanian nobility (Radziwiłł, Giedymin, etc.) also entered Polish culture.",
+      "sources": [
+        "Wiktionary: kindziuk (Polish), etymology"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "Latvian and the Finnic layer",
+      "text": "Latvian is closer to Lithuanian than to Polish but diverged during the first millennium CE: fixed initial stress, lost neuter and dual, and many Livonian (Finnic) and Low German loans, so Latvian and Lithuanian are also not mutually intelligible without study.",
+      "sources": [
+        "Wikipedia: Latvian language"
+      ],
+      "low_confidence": false
+    },
+    {
+      "topic": "Why they are not mutually intelligible",
+      "text": "Shared cognates are few and masked by regular sound change, so a Pole hears ranka and guesses ręka but cannot parse a sentence. Grammar and function words differ: other case endings, different words for 'and' and 'with' (ir, su vs i, z), pronouns (aš, mes vs ja, my; tu and ty happen to match) and many unrelated roots (duona 'bread' vs chleb, kaip 'how' vs jak). Vocabulary overlap is nowhere near the level of Polish-Czech.",
+      "sources": [
+        "Wiktionary: duona, kaip (Lithuanian)"
+      ],
+      "low_confidence": false
+    }
+  ]
 }
