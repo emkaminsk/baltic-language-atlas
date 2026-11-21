@@ -26,3 +26,14 @@ Concept: **time is height.** The map is a 3D relief table; ancestors float above
 - Page: tree clipped on the left ("uropean", "4000 BCE"); `<title>` was in `<body>`; no shareable state; 2D labels collide in the Baltic.
 - Verified (headless Chromium, swiftshader WebGL): no console errors; 3D flat/lifted, light/dark, 375px with reduced motion, no horizontal overflow; hover tip, click-to-compare, search, URL hash, play/pause, contact arcs, kinship colour, 2D toggle.
 - Open: selected labels may overlap each other (they bypass collision by design); endonyms such as Russian are transliterated (`russkii iazyk`) rather than in native script; the 3D view needs the jsdelivr CDN.
+
+# 3D globe (2026-11-21)
+
+- [x] Identify the 2D projection: Lambert conformal conic, lon0 24°E, n 0.8425 (fitted to the graticule, residual < 0.03 units)
+- [x] `bend()`: flat (x, height, z) → sphere of true-scale radius (~1180 units); tree, beads, labels, arcs, time sheet all bent
+- [x] Ground: map painted to a canvas texture on a 200×140 curved grid; slab sides; glossy water via roughness map; thin atmosphere shell
+- [x] Camera presets re-framed for the curved surface
+- [x] Verify light/dark, lift, year, picking, 2D toggle, 375px
+
+## Review
+- Replaced extruded land + lines (net less code). Lift now re-bends tree geometry instead of scaling `treeG.y`.

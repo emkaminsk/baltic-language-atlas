@@ -495,29 +495,61 @@ function init3d() {
         for (let i = 0; i < 22; i++) { const m = (lo + hi) / 2; c.getPoint(m, tmp); if (tmp.y < h) lo = m; else hi = m; } return c.getPoint(hi, out); }
       cur = p; } }
 
-  // ---------- ground: the SVG land path, extruded ----------
-  const rings = d => { const out = []; let r = null; d.replace(/([MLZ])([^MLZ]*)/g, (_, c, a) => { if (c === 'M') { r = []; out.push(r); } if (c !== 'Z') { const [x, y] = a.split(',').map(Number); r.push(new THREE.Vector2(x, y)); } }); return out; };
-  const landRings = rings(D.geo.land).filter(r => r.length > 2);
-  const inside = (pt, poly) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j]; if ((a.y > pt.y) !== (b.y > pt.y) && pt.x < (b.x - a.x) * (pt.y - a.y) / (b.y - a.y) + a.x) c = !c; } return c; };
-  const area = r => Math.abs(THREE.ShapeUtils.area(r));
-  // rings nested an odd number of times are lakes (holes)
-  const info = landRings.map(r => ({r, a: area(r), par: landRings.filter(o => o !== r && area(o) > area(r) && inside(r[0], o))}));
-  const shapes = new Map();
-  info.filter(i => i.par.length % 2 === 0).forEach(i => shapes.set(i.r, new THREE.Shape(i.r)));
-  info.filter(i => i.par.length % 2 === 1).forEach(i => { const host = i.par.filter(p => shapes.has(p)).sort((a, b) => area(a) - area(b))[0]; if (host) shapes.get(host).holes.push(new THREE.Path(i.r)); });
-  const DEPTH = 5;
-  const landGeo = new THREE.ExtrudeGeometry([...shapes.values()], {depth: DEPTH, bevelEnabled: false});
-  landGeo.rotateX(Math.PI / 2); landGeo.translate(-W / 2, 0, -H / 2);   // svg (x,y) → world (x, 0, y), extruded downward
-  const landMat = new THREE.MeshStandardMaterial({roughness: .95, metalness: 0});
-  scene.add(new THREE.Mesh(landGeo, landMat));
-  const tableMat = new THREE.MeshStandardMaterial({roughness: .9});
-  const table = new THREE.Mesh(new THREE.BoxGeometry(W, 14, H), tableMat); table.position.y = -DEPTH - 7.5; scene.add(table);
-  const lineGeo = (d, closed, y) => { const pts = []; rings(d).forEach(r => { const n = closed ? r.length : r.length - 1; for (let i = 0; i < n; i++) { const a = r[i], b = r[(i + 1) % r.length]; pts.push(wx(a.x), y, wz(a.y), wx(b.x), y, wz(b.y)); } });
-    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3)); return g; };
-  const coastMat = new THREE.LineBasicMaterial(), bordMat = new THREE.LineBasicMaterial({transparent: true, opacity: .55}), gratMat = new THREE.LineBasicMaterial({transparent: true, opacity: .5});
-  scene.add(new THREE.LineSegments(lineGeo(D.geo.land, true, .2), coastMat));
-  scene.add(new THREE.LineSegments(lineGeo(D.geo.borders, false, .3), bordMat));
-  scene.add(new THREE.LineSegments(lineGeo(D.geo.grat, false, -DEPTH - .2), gratMat));
+  // ---------- the globe: undo the 2D map's projection and lay the map on a sphere ----------
+  // The 2D map is a Lambert conformal conic. Constants fitted to its inlined graticule
+  // (meridians every 10°, parallels every 5°; residual < 0.03 map units).
+  // All tree/bead logic stays in "flat" coordinates (x, height, z); bend() turns them into world space.
+  const LCC = {n: .842481, k: 2128.293, ax: 499.643, ay: -429.697, lon0: 24 * Math.PI / 180};
+  const cLat = Math.PI / 2 - 2 * Math.atan((Math.hypot(W / 2 - LCC.ax, H / 2 - LCC.ay) / LCC.k) ** (1 / LCC.n));
+  const cLon = LCC.lon0 + Math.atan2(W / 2 - LCC.ax, H / 2 - LCC.ay) / LCC.n;
+  // Earth's radius in map units: true scale at the map centre (~1180, i.e. 1 unit ≈ 5.4 km)
+  const RE = LCC.k * LCC.n * Math.tan(Math.PI / 4 - cLat / 2) ** LCC.n / Math.cos(cLat);
+  const sLa = Math.sin(cLat), cLa = Math.cos(cLat), sLo = Math.sin(cLon), cLo = Math.cos(cLon);
+  // flat point → world: the sphere point under (x, z), raised by y along the local vertical; the map centre sits at the origin
+  function bend(x, y, z, out = new V3()) {
+    const dx = x + W / 2 - LCC.ax, dy = z + H / 2 - LCC.ay, la = Math.PI / 2 - 2 * Math.atan((Math.hypot(dx, dy) / LCC.k) ** (1 / LCC.n)), lo = LCC.lon0 + Math.atan2(dx, dy) / LCC.n;
+    const r = RE + y, cl = Math.cos(la), ex = cl * Math.cos(lo), ey = cl * Math.sin(lo), ez = Math.sin(la);   // earth-centred unit vector
+    return out.set((-sLo * ex + cLo * ey) * r, (cLa * cLo * ex + cLa * sLo * ey + sLa * ez) * r - RE, (sLa * cLo * ex + sLa * sLo * ey - cLa * ez) * r); }
+  const UP = new V3(0, 1, 0), bu = new V3();
+  const upAt = (x, z, out) => bend(x, 0, z, out).setY(out.y + RE).normalize();   // local vertical
+  const tilt = (x, z, q) => q.setFromUnitVectors(UP, upAt(x, z, bu));
+  // re-bend a geometry built in flat space; heights scale by `lift` and shift by `dh`
+  const bp = new V3(), bn = new V3();
+  function bendGeo(g, lift = 1, dh = 0, normals = false) {
+    const pos = g.attributes.position, f = g.userData.flat ||= pos.array.slice(), nf = normals && (g.userData.nflat ||= g.attributes.normal.array.slice());
+    for (let i = 0, j = 0; i < pos.count; i++, j += 3) { const x = f[j], y = f[j + 1] * lift + dh, z = f[j + 2]; bend(x, y, z, bp); pos.setXYZ(i, bp.x, bp.y, bp.z);
+      if (nf) { bend(x + nf[j], y + nf[j + 1], z + nf[j + 2], bn).sub(bp).normalize(); g.attributes.normal.setXYZ(i, bn.x, bn.y, bn.z); } }
+    pos.needsUpdate = true; if (nf) g.attributes.normal.needsUpdate = true; g.computeBoundingSphere(); return g; }
+  const grid = (sx, sz) => new THREE.PlaneGeometry(W, H, sx, sz).rotateX(-Math.PI / 2);   // flat map rectangle, uv (0,1) = top-left
+  const rim = step => { const p = [], add = (x, z) => p.push(x - W / 2, 0, z - H / 2);   // closed loop round the map edge
+    for (let x = 0; x < W; x += step) add(x, 0); for (let z = 0; z < H; z += step) add(W, z); for (let x = W; x > 0; x -= step) add(x, H); for (let z = H; z > 0; z -= step) add(0, z); return p; };
+
+  // ---------- ground: the 2D map painted onto a curved slab of the globe ----------
+  const tex = document.createElement('canvas'), roughC = document.createElement('canvas'), TS = Math.min(4096, renderer.capabilities.maxTextureSize) / W;
+  [tex, roughC].forEach(c => { c.width = W * TS; c.height = Math.round(H * TS); });
+  const pLand = new Path2D(D.geo.land), pBord = new Path2D(D.geo.borders), pGrat = new Path2D(D.geo.grat);
+  const paint = (c, sea, land, lines) => { const g = c.getContext('2d'); g.setTransform(TS, 0, 0, TS, 0, 0); g.lineJoin = 'round';
+    g.fillStyle = sea; g.fillRect(0, 0, W, H); if (lines) { g.strokeStyle = lines.grat; g.lineWidth = .7; g.stroke(pGrat); }
+    g.fillStyle = land; g.fill(pLand, 'evenodd'); if (lines) { g.strokeStyle = lines.coast; g.lineWidth = .8; g.stroke(pLand); g.globalAlpha = .7; g.lineWidth = .6; g.stroke(pBord); g.globalAlpha = 1; } };
+  paint(roughC, '#8c8c8c', '#f2f2f2');   // water a little glossy (catches the sun near the horizon), land matt
+  const mapTex = new THREE.CanvasTexture(tex), roughTex = new THREE.CanvasTexture(roughC);
+  mapTex.colorSpace = THREE.SRGBColorSpace; mapTex.anisotropy = roughTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  const DEPTH = 9;
+  const landMat = new THREE.MeshStandardMaterial({map: mapTex, roughnessMap: roughTex, metalness: 0});
+  scene.add(new THREE.Mesh(bendGeo(grid(200, 140), 1, 0, true), landMat));
+  // the slab's cut faces (crust) and underside
+  const tableMat = new THREE.MeshStandardMaterial({roughness: .9, side: THREE.DoubleSide});
+  const edge = rim(10), sideP = [], sideI = [];
+  for (let i = 0; i < edge.length; i += 3) { sideP.push(edge[i], 0, edge[i + 2], edge[i], -DEPTH, edge[i + 2]); const a = i / 3 * 2, b = (a + 2) % (edge.length / 3 * 2); sideI.push(a, a + 1, b, b, a + 1, b + 1); }
+  const sideGeo = new THREE.BufferGeometry(); sideGeo.setAttribute('position', new THREE.Float32BufferAttribute(sideP, 3)); sideGeo.setIndex(sideI);
+  bendGeo(sideGeo).computeVertexNormals();
+  scene.add(new THREE.Mesh(sideGeo, tableMat), new THREE.Mesh(bendGeo(grid(40, 28), 1, -DEPTH), tableMat));
+  // thin atmosphere: a translucent shell that tints where you look across it at a grazing angle (strongest along the far horizon)
+  const atmoMat = new THREE.ShaderMaterial({transparent: true, depthWrite: false, uniforms: {c: {value: new THREE.Color()}, k: {value: 1}},
+    vertexShader: 'varying vec3 vN, vV; varying vec2 vU; void main(){ vU = uv; vec4 w = modelMatrix * vec4(position, 1.); vN = normalize(mat3(modelMatrix) * normal); vV = normalize(cameraPosition - w.xyz); gl_Position = projectionMatrix * viewMatrix * w; }',
+    fragmentShader: 'uniform vec3 c; uniform float k; varying vec3 vN, vV; varying vec2 vU; void main(){ vec2 e = min(vU, 1. - vU); float f = pow(1. - abs(dot(normalize(vN), normalize(vV))), 5.) * smoothstep(0., .06, min(e.x, e.y)); gl_FragColor = vec4(c, f * k); }'});
+  const atmo = new THREE.Mesh(bendGeo(grid(80, 56), 1, 6, true), atmoMat); atmo.renderOrder = -1; scene.add(atmo);
+  function paintMap() { paint(tex, css('--sea'), css('--land'), {grat: css('--grat'), coast: css('--coast')}); mapTex.needsUpdate = true; }
 
   // ---------- family tree canopy (scaled vertically by "lift") ----------
   const treeG = new THREE.Group(); scene.add(treeG);
@@ -528,7 +560,6 @@ function init3d() {
   const sphere = new THREE.SphereGeometry(1, 24, 16);
   const nodeMesh = new THREE.InstancedMesh(sphere, new THREE.MeshStandardMaterial({roughness: .5}), D.nodes.length);
   const dummy = new THREE.Object3D();
-  D.nodes.forEach((n, i) => { dummy.position.copy(P[n.id]); dummy.scale.setScalar(3.2); dummy.updateMatrix(); nodeMesh.setMatrixAt(i, dummy.matrix); });
   treeG.add(nodeMesh);
   // time ruler in the back-left corner
   const ruler = new THREE.Group(); treeG.add(ruler);
@@ -543,7 +574,7 @@ function init3d() {
   function mkLabel(cls, parent = scene) { const el = document.createElement('div'), span = document.createElement('span'); el.className = 'l3d ' + cls; el.appendChild(span);
     const o = new CSS2DObject(el); o.center.set(.5, 1); o.visible = false; parent.add(o); const lb = {o, el, span, text: '', pr: 0, w: 0}; labels.push(lb); return lb; }
   const setText = (lb, html, chars) => { if (lb.text !== html) { lb.text = html; lb.span.innerHTML = html; lb.w = chars * 6.9 + 14; } };
-  ticks.forEach(y => { const lb = mkLabel('tick', ruler); lb.o.center.set(1, .5); lb.o.position.set(rx - 4, hOf(y), rz); setText(lb, y === 1 ? '1 CE' : fmtYear(y).replace(' CE', ''), 8); lb.pr = 3e6; tickLabs.push(lb); });
+  ticks.forEach(y => { const lb = mkLabel('tick', ruler); lb.o.center.set(1, .5); setText(lb, y === 1 ? '1 CE' : fmtYear(y).replace(' CE', ''), 8); lb.pr = 3e6; tickLabs.push(lb); });
   const langLab = {}; D.langs.forEach(l => langLab[l.id] = mkLabel(''));
   const nodeLab = {}; D.nodes.forEach(n => nodeLab[n.id] = mkLabel('proto'));
   const lcaLab = mkLabel('lca'); lcaLab.pr = 9e6;
@@ -557,12 +588,12 @@ function init3d() {
   const ringGeo = new THREE.TorusGeometry(1, .13, 8, 40); ringGeo.rotateX(Math.PI / 2);
   const ghostRings = new THREE.InstancedMesh(ringGeo, new THREE.MeshStandardMaterial({roughness: .5}), extinct.length); scene.add(ghostRings);
   const selRing = [0, 1].map(() => { const m = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial()); m.visible = false; scene.add(m); return m; });
-  const beadPos = D.langs.map(() => new V3());
+  const beadFlat = D.langs.map(() => new V3()), beadPos = D.langs.map(() => new V3());
 
   // ---------- contact arcs with particles flowing towards the borrower ----------
   const arcs = D.contacts.map((c, i) => { const a = P[c.from], b = P[c.to]; if (!a || !b) return null; const d = a.distanceTo(b), mid = a.clone().lerp(b, .5); mid.y = 30 + d * .38;
     const curve = new THREE.QuadraticBezierCurve3(a.clone().setY(2), mid, b.clone().setY(2));
-    const m = new THREE.Mesh(new THREE.TubeGeometry(curve, 48, .45 + .3 * c.strength, 6), new THREE.MeshBasicMaterial({transparent: true, depthWrite: false}));
+    const m = new THREE.Mesh(bendGeo(new THREE.TubeGeometry(curve, 48, .45 + .3 * c.strength, 6)),new THREE.MeshBasicMaterial({transparent: true, depthWrite: false}));
     m.userData = {arc: i}; m.visible = false; scene.add(m); return {m, curve, c}; });
   const PER = 4, parts = new THREE.InstancedMesh(sphere, new THREE.MeshBasicMaterial(), arcs.length * PER); scene.add(parts);
 
@@ -575,22 +606,24 @@ function init3d() {
     const ids = new Set();
     if (c) { lcaId = lca(f, c); [f, c].forEach(id => { for (let k = id; k && k !== lcaId; k = parentOf(k)) ids.add(k); }); }
     else for (let k = f; parentOf(k); k = parentOf(k)) ids.add(k);
-    ids.forEach(id => hlG.add(new THREE.Mesh(new THREE.TubeGeometry(CURVE[id], 40, 1.5, 8), hlMat)));
-    if (lcaId) { lcaMesh.position.copy(P[lcaId]); lcaMesh.scale.setScalar(6); hlG.add(lcaMesh); }
+    ids.forEach(id => hlG.add(new THREE.Mesh(bendGeo(new THREE.TubeGeometry(CURVE[id], 40, 1.5, 8), 1, 0, true), hlMat)));
+    if (lcaId) { bend(P[lcaId].x, P[lcaId].y, P[lcaId].z, lcaMesh.position);lcaMesh.scale.setScalar(6); hlG.add(lcaMesh); }
   }
 
   // ---------- time sheet ----------
-  const sheet = new THREE.Mesh(new THREE.PlaneGeometry(W, H).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({transparent: true, opacity: .07, depthWrite: false, side: THREE.DoubleSide}));
-  const sheetEdge = new THREE.LineSegments(new THREE.EdgesGeometry(sheet.geometry), new THREE.LineBasicMaterial({transparent: true, opacity: .5}));
+  // a shell concentric with the globe at the chosen year's height
+  const sheet = new THREE.Mesh(grid(40, 28), new THREE.MeshBasicMaterial({transparent: true, opacity: .07, depthWrite: false, side: THREE.DoubleSide}));
+  const sheetEdge = new THREE.LineLoop(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(rim(25), 3)), new THREE.LineBasicMaterial({transparent: true, opacity: .5}));
   sheet.add(sheetEdge); scene.add(sheet);
-  sheet.add(sheetLab.o); sheetLab.o.position.set(-W / 2 + 6, 0, -H / 2);
+  let sheetH = null;
 
   // ---------- theme ----------
   let COL = {};
   function applyTheme() {
     COL = {}; ['finnic', 'sami', 'uralic', 'baltic', 'slavic', 'germanic', 'romance', 'turkic', 'bs', 'ur', 'ie'].forEach(g => COL[g] = cssColor('--g-' + g));
-    ['land', 'sea', 'coast', 'fg', 'accent', 'near', 'far', 'grat', 'muted', 'panel'].forEach(k => COL[k] = cssColor('--' + k));
-    landMat.color.copy(COL.land); tableMat.color.copy(COL.sea); coastMat.color.copy(COL.coast); bordMat.color.copy(COL.coast); gratMat.color.copy(COL.grat); rulerMat.color.copy(COL.muted);
+    ['bg', 'land', 'sea', 'coast', 'fg', 'accent', 'near', 'far', 'grat', 'muted', 'panel'].forEach(k => COL[k] = cssColor('--' + k));
+    paintMap(); tableMat.color.copy(COL.sea).lerp(COL.coast, .35); rulerMat.color.copy(COL.muted);
+    const dark = COL.bg.getHSL({}).l < .5; atmoMat.uniforms.c.value.set(dark ? 0x4f9fd0 : 0x7fb8dd); atmoMat.uniforms.k.value = dark ? .5 : .3;
     edges.forEach(m => m.material.color.copy(COL[groupKey(m.userData.id)]));
     D.nodes.forEach((n, i) => nodeMesh.setColorAt(i, COL[nodeGroup(n.id)])); nodeMesh.instanceColor.needsUpdate = true;
     hlMat.color.copy(COL.accent); hlMat.emissive.copy(COL.accent).multiplyScalar(.35);
@@ -603,7 +636,7 @@ function init3d() {
   new MutationObserver(applyTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
 
   // ---------- state, animated toward S ----------
-  let active = false, onscreen = true, dirty = true, lift = S.lift ? 1 : 0, liftT = lift, hNow = hOf(S.year), hT = hNow, tween = null;
+  let active = false, onscreen = true, dirty = true, bentLift = null, lift = S.lift ? 1 : 0, liftT = lift, hNow = hOf(S.year), hT = hNow, tween = null;
   const col3 = new THREE.Color();
   function beadColor(l, Y) {
     if (S.color === 'kin' && S.focus) { if (l.id === S.focus) return col3.copy(COL.near); const s = sep(S.focus, l.id); return s == null ? col3.copy(COL.far) : col3.copy(COL.near).lerp(COL.far, Math.min(1, Math.sqrt(s / 6500))); }
@@ -614,36 +647,42 @@ function init3d() {
 
   function layout() {
     const Y = hNow < .01 ? NOW : yearFromH(hNow), groups = groupsAt(Y);
-    treeG.scale.y = Math.max(lift, .001); treeG.visible = lift > .01; tickLabs.forEach(lb => lb.o.visible = lift > .3);
+    treeG.visible = lift > .01; tickLabs.forEach(lb => lb.o.visible = lift > .3);
+    if (lift !== bentLift && treeG.visible) { bentLift = lift;   // raise the tree along the local vertical
+      edges.forEach(m => bendGeo(m.geometry, lift)); bendGeo(rg, lift); tickLabs.forEach((lb, i) => bend(rx - 4, hOf(ticks[i]) * lift, rz, lb.o.position));
+      D.nodes.forEach((n, i) => { bend(P[n.id].x, P[n.id].y * lift, P[n.id].z, dummy.position); dummy.scale.setScalar(3.2); dummy.updateMatrix(); nodeMesh.setMatrixAt(i, dummy.matrix); });
+      nodeMesh.instanceMatrix.needsUpdate = true; nodeMesh.computeBoundingSphere(); }
     edges.forEach(m => m.material.opacity = (L[m.userData.id]?.status === 'extinct' ? .25 : .5) * lift);
     let e = 0;
-    D.langs.forEach((l, i) => { const v = lineagePoint(l.id, hNow, beadPos[i]); v.y = v.y * lift + R[i];
-      dummy.position.copy(v); dummy.scale.setScalar(R[i]); dummy.updateMatrix(); beads.setMatrixAt(i, dummy.matrix);
+    D.langs.forEach((l, i) => { const f = lineagePoint(l.id, hNow, beadFlat[i]); f.y = f.y * lift + R[i]; const v = bend(f.x, f.y, f.z, beadPos[i]);
+      dummy.position.copy(v); tilt(f.x, f.z, dummy.quaternion); dummy.scale.setScalar(R[i]); dummy.updateMatrix(); beads.setMatrixAt(i, dummy.matrix);
       const c = beadColor(l, Y); if (l.status === 'extinct') { beads.setColorAt(i, c.clone().lerp(COL.land, .65)); dummy.scale.setScalar(R[i] * 1.25); dummy.updateMatrix(); ghostRings.setMatrixAt(e, dummy.matrix); ghostRings.setColorAt(e++, c); }
       else beads.setColorAt(i, c);
       // label: own name while distinct, hidden once merged into an ancestor
       const lb = langLab[l.id], sel = l.id === S.focus || l.id === S.cmp, g = groupAt(l, Y), merged = g && groups[g] && groups[g].length > 1;
       const t = S.label === 'name' ? l.name : S.label === 'endonym' ? l.endonym : l.words[S.label];
-      lb.o.visible = !!t && !merged; lb.o.position.copy(v).setY(v.y + R[i]);
+      lb.o.visible = !!t && !merged; bend(f.x, f.y + R[i], f.z, lb.o.position);
       setText(lb, esc(t), String(t || '').length * (sel ? 1.1 : 1)); lb.el.className = 'l3d' + (S.label === 'name' || S.label === 'endonym' ? '' : ' word') + (l.id === S.focus ? ' sel' : l.id === S.cmp ? ' sel cmp' : '');
       lb.pr = sel ? 1e7 : l.speakers_m + (l.g === 'baltic' || l.g === 'finnic' ? 3 : 0);
     });
-    beads.instanceMatrix.needsUpdate = ghostRings.instanceMatrix.needsUpdate = true; beads.instanceColor.needsUpdate = true; if (ghostRings.instanceColor) ghostRings.instanceColor.needsUpdate = true;
+    beads.instanceMatrix.needsUpdate = ghostRings.instanceMatrix.needsUpdate = true; beads.computeBoundingSphere(); beads.instanceColor.needsUpdate = true; if (ghostRings.instanceColor) ghostRings.instanceColor.needsUpdate = true;
     // proto-language labels: on merged dots in the past, on tree nodes when lifted
     const hlIds = new Set(); if (S.focus) [S.focus, S.cmp].filter(Boolean).forEach(id => L[id].chain.forEach(c => hlIds.add(c)));
     D.nodes.forEach(n => { const lb = nodeLab[n.id], m = groups[n.id], active = m && m.length > 1;
       const big = (leavesOf[n.id] || []).length >= 4 || hlIds.has(n.id);
       lb.o.visible = !!active || (lift > .5 && big && n.id !== lcaId);
-      if (active) lb.o.position.copy(beadPos[D.langs.indexOf(m[0])]).setY(beadPos[D.langs.indexOf(m[0])].y + R[D.langs.indexOf(m[0])] + 2);
-      else lb.o.position.set(P[n.id].x, P[n.id].y * lift + 4, P[n.id].z);
+      if (active) { const j = D.langs.indexOf(m[0]), f = beadFlat[j]; bend(f.x, f.y + R[j] + 2, f.z, lb.o.position); }
+      else bend(P[n.id].x, P[n.id].y * lift + 4, P[n.id].z, lb.o.position);
       setText(lb, active ? `${esc(shortName(n))}<small>${m.length}</small>` : `${esc(shortName(n))}<small>${fmtYear(n.year)}</small>`, shortName(n).length + 8);
       lb.pr = active ? 2e6 + m.length : 1e6 + (leavesOf[n.id] || []).length; });
     // last common ancestor
     hlG.visible = lift > .5 || hNow < 1; lcaLab.o.visible = !!lcaId && hlG.visible;
-    if (lcaId) { const s = sep(S.focus, S.cmp); lcaLab.o.position.copy(P[lcaId]).setY(P[lcaId].y + 8);
+    if (lcaId) { const s = sep(S.focus, S.cmp); bend(P[lcaId].x, P[lcaId].y + 8, P[lcaId].z, lcaLab.o.position);
       setText(lcaLab, `${esc(N[lcaId].name)}<small>${fmtSep(s).replace('~', '≈ ')} apart · broke up ~${fmtYear(N[lcaId].year)}</small>`, Math.max(N[lcaId].name.length, 34)); }
     // time sheet
-    const past = Y < NOW - 1; sheet.visible = past && lift > .05; sheet.position.y = hNow * lift; sheetLab.o.visible = sheet.visible; setText(sheetLab, fmtYear(Math.round(Y / 25) * 25), 10);
+    const past = Y < NOW - 1; sheet.visible = past && lift > .05;
+    if (sheet.visible && sheetH !== hNow * lift) { sheetH = hNow * lift; bendGeo(sheet.geometry, 1, sheetH); bendGeo(sheetEdge.geometry, 1, sheetH); bend(-W / 2 + 6, sheetH, -H / 2, sheetLab.o.position); }
+    sheetLab.o.visible = sheet.visible; setText(sheetLab, fmtYear(Math.round(Y / 25) * 25), 10);
     // contact arcs
     arcs.forEach(a => { if (!a) return; const c = a.c; a.m.visible = S.contacts && !(S.focus && c.from !== S.focus && c.to !== S.focus && S.cmp !== c.from && S.cmp !== c.to);
       a.m.material.color.copy(S.arc === a.m.userData.arc ? COL.accent : COL.fg); a.m.material.opacity = S.arc === a.m.userData.arc ? .95 : c.kind === 'loanwords' ? .45 : .25; });
@@ -662,7 +701,7 @@ function init3d() {
 
   // ---------- camera presets ----------
   function preset(lifted) { const a = host.clientWidth / Math.max(1, host.clientHeight), f = Math.max(1, 1.45 / a), fl = Math.max(1, 1.15 / a);
-    return lifted ? {pos: new V3(-90 * fl, 170 * fl + 150, 1150 * fl), tgt: new V3(0, 150, 30)} : {pos: new V3(0, 700 * f, 800 * f), tgt: new V3(0, 0, 55)}; }
+    return lifted ? {pos: new V3(-90 * fl, 380 * fl + 150, 1250 * fl), tgt: new V3(0, 110, 0)} : {pos: new V3(0, 760 * f, 820 * f), tgt: new V3(0, -30, 45)}; }
   function flyTo(p, ms = 1200) { tween = {p0: camera.position.clone(), t0v: controls.target.clone(), p, ms: reduce.matches ? 1 : ms, s: performance.now()}; }
   const ease = t => t < .5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
 
@@ -698,9 +737,9 @@ function init3d() {
     controls.update();
     // flowing particles + pulsing selection rings
     let pi = 0; const ph = reduce.matches ? 0 : t / 2600;
-    arcs.forEach(a => { for (let j = 0; j < PER; j++, pi++) { if (a && a.m.visible) { a.curve.getPoint((ph + j / PER) % 1, dummy.position); dummy.scale.setScalar(1.1 + .25 * a.c.strength); } else dummy.scale.setScalar(0); dummy.updateMatrix(); parts.setMatrixAt(pi, dummy.matrix); } });
+    arcs.forEach(a => { for (let j = 0; j < PER; j++, pi++) { if (a && a.m.visible) { a.curve.getPoint((ph + j / PER) % 1, tmp); bend(tmp.x, tmp.y, tmp.z, dummy.position); dummy.scale.setScalar(1.1 + .25 * a.c.strength); } else dummy.scale.setScalar(0); dummy.updateMatrix(); parts.setMatrixAt(pi, dummy.matrix); } });
     parts.instanceMatrix.needsUpdate = true;
-    [S.focus, S.cmp].forEach((id, j) => { const m = selRing[j]; m.visible = !!id; if (!id) return; const i = D.langs.indexOf(L[id]); m.position.copy(beadPos[i]); m.scale.setScalar(R[i] + 3 + (reduce.matches ? 0 : Math.sin(t / 380 + j * 2) * .8)); });
+    [S.focus, S.cmp].forEach((id, j) => { const m = selRing[j]; m.visible = !!id; if (!id) return; const i = D.langs.indexOf(L[id]); m.position.copy(beadPos[i]); tilt(beadFlat[i].x, beadFlat[i].z, m.quaternion); m.scale.setScalar(R[i] + 3 + (reduce.matches ? 0 : Math.sin(t / 380 + j * 2) * .8)); });
     renderer.render(scene, camera); labelR.render(scene, camera); declutter();
   }
 

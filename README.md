@@ -3,7 +3,7 @@
 Interactive 3D map of 61 languages of northern and eastern Europe: families, estimated divergence dates, word comparisons and contact (loanword) links. Focus on Baltic and Finnic languages and their relation to Polish and other Slavic languages.
 
 - **Open locally:** `baltic-language-atlas.html` (data inlined; needs internet for fonts and three.js, otherwise falls back to the 2D map)
-- **3D view:** height is time. Lift the family tree out of the map, play history from 4500 BCE, follow loanword arcs. The URL hash keeps the selection (`#f=pol&c=lit&y=-800`).
+- **3D view:** the map is a curved slab of the globe at true scale (Earth's curvature visible); height is time, along the local vertical. Lift the family tree out of the map, play history from 4500 BCE, follow loanword arcs. The URL hash keeps the selection (`#f=pol&c=lit&y=-800`).
 - **Published artifact:** https://claude.ai/artifact/NQaRBVdrjoJg8Jm4UeUXz5
 - **Created:** 2026-11-14
 
